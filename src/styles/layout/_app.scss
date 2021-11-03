@@ -1,6 +1,6 @@
-@use '../themes/defaultTheme' as *;
-@use '../util/variables' as *;
-@use '../util/mixins' as *;
+@import '../themes/defaultTheme';
+@import '../util/variables';
+@import '../util/mixins';
 
 .container {
     width: 90vw;
