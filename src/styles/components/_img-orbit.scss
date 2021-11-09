@@ -10,7 +10,7 @@
     margin: auto;
     margin-bottom: -10%;
     &.orbit{
-        animation: orbit 1s ease forwards;
+        animation: orbit 0.5s ease forwards;
     }
     @keyframes orbit {
         0%{
@@ -48,19 +48,19 @@
             transform: rotateZ(180deg) translateX(-23.5vw) rotateZ(-180deg);
         }
         &.fade-in{
-            animation: orbit-fade-in 1s forwards;
+            animation: orbit-fade-in 0.5s forwards;
         }
         &.rotate1{
-            animation: rotate1 1s forwards;
+            animation: rotate1 0.5s forwards;
         }
         &.rotate2{
-            animation: rotate2 1s forwards;
+            animation: rotate2 0.5s forwards;
         }
         &.rotate3{
-            animation: rotate3 1s forwards;
+            animation: rotate3 0.5s forwards;
         }
         &.rotate4{
-            animation: rotate4 1s forwards;
+            animation: rotate4 0.5s forwards;
         }
         &.disappear{
             display: none;

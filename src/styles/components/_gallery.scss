@@ -1,10 +1,9 @@
 @import './img-orbit';
 .gallery{
     background: blue;
-    z-index: 1;
-    clip-path: polygon(90% 80%, 100% 80%, 100% 100%, 90% 100%);
-    &.open{
-        animation: gallery-open 1s forwards;   
+    z-index: 1; 
+    &.closed{
+        clip-path: polygon(90% 80%, 100% 80%, 100% 100%, 90% 100%);
     }
     @keyframes gallery-open {
         0%{

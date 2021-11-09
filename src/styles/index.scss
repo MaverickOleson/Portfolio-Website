@@ -3,3 +3,8 @@
 @import './base';
 @import './layout/app';
 @import './components/index';
+.web-page{
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+}
