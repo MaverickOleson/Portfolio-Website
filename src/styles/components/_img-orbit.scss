@@ -1,14 +1,14 @@
 .img-orbit{
     // all: unset;
-    width: 60vw;
-    height: 60vw;
+    width: fit-content;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     margin: auto;
-    margin-bottom: -10%;
+    margin-top: 12%;
     &.orbit{
         animation: orbit 0.5s ease forwards;
     }
@@ -22,30 +22,31 @@
     }
     img{
         // all: unset;
-        width: 15%;
-        height: 15%;
+        width: 10vw;
+        height: 10vw;
         position: absolute;
         transform-origin: center;
         border-radius: 50%;
         object-fit: cover;
+        $spread: -25vw;
         &:nth-of-type(1){
-            transform: rotateZ(-45deg) translateX(-23.5vw);
+            transform: rotateZ(-45deg) translateX($spread);
             opacity: 0;
         }
         &:nth-of-type(2){
-            transform: translateX(-23.5vw);
+            transform: translateX($spread);
         }
         &:nth-of-type(3){
-            transform: rotateZ(45deg) translateX(-23.5vw) rotateZ(-45deg);
+            transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
         }
         &:nth-of-type(4){
-            transform: rotateZ(90deg) translateX(-23.5vw) rotateZ(-90deg);
+            transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
         }
         &:nth-of-type(5){
-            transform: rotateZ(135deg) translateX(-23.5vw) rotateZ(-135deg);
+            transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
         }
         &:nth-of-type(6){
-            transform: rotateZ(180deg) translateX(-23.5vw) rotateZ(-180deg);
+            transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
         }
         &.fade-in{
             animation: orbit-fade-in 0.5s forwards;
@@ -107,20 +108,19 @@
                 transform: rotateZ(180deg) translateX(-23.5vw) rotateZ(-180deg);
             }
         }
-        // @keyframes orbit-fade-out {
-        //     0%{
-        //         opacity: 1;
-        //     }
-        //     100%{
-        //         opacity: 0;
-        //     }
-        // }
     }
     .current{
         position: static;
-        width: 50%;
-        height: 50%;
+        width: 35vw;
+        height: 35vw;
         box-sizing: border-box;
         border: 10px solid white;
+    }
+    .orbiters{
+        width: fit-content;
+        *{
+            font-size: 2vw;
+            margin: 10px;
+        }
     }
 }

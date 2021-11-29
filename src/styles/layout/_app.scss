@@ -2,4 +2,29 @@
     width: 100%;
     min-height: 100vh;
     height: 100%;
+    &.gallery{
+        transform: translateX(-180vw) translateY(-180vh);
+    }
+    &.shift4F{
+        animation: shift4F 1s ease forwards;
+    }
+    &.shift4B{
+        animation: shift4B 1s ease forwards;
+    }
+    @keyframes shift4F {
+        0%{
+            transform: translateX(0) translateY(0);
+        }
+        100%{
+            transform: translateX(-90vw) translateY(-90vh);
+        }
+    }
+    @keyframes shift4B {
+        0%{
+            transform: translateX(-90vw) translateY(-90vh);
+        }
+        100%{
+            transform: translateX(0) translateY(0);
+        }
+    }
 }

@@ -1,16 +1,11 @@
 @import './img-orbit';
+*::-webkit-scrollbar{
+    display: none;
+}
 .gallery{
     background: blue;
-    z-index: 1; 
-    &.closed{
-        clip-path: polygon(90% 80%, 100% 80%, 100% 100%, 90% 100%);
-    }
-    @keyframes gallery-open {
-        0%{
-            clip-path: polygon(90% 80%, 100% 80%, 100% 100%, 90% 100%);
-        }
-        100%{
-            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
-        }
-    }
+    z-index: 1;
+    top: 90vh;
+    left: 90vw;
+    position: fixed;
 }
