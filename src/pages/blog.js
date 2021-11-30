@@ -6,7 +6,7 @@ export default React.memo(function Blog({ shift, setShift }) {
     const navigation = useNavigate();
     const [navText, setNavText] = useState();
     useEffect(() => {
-        if (window.location.pathname == '/') {
+        if (window.location.pathname === '/') {
             setNavText('Blog')
         } else {
             setNavText('Home')

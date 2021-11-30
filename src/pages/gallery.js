@@ -16,7 +16,7 @@ export default React.memo(function Gallery({ shift, setShift }) {
     const img5 = useRef();
     const img6 = useRef();
     useEffect(() => {
-        if (window.location.pathname == '/') {
+        if (window.location.pathname === '/') {
             setNavText('Gallery')
         } else {
             setNavText('Home')
@@ -50,7 +50,7 @@ export default React.memo(function Gallery({ shift, setShift }) {
                 <div className='orbiters'>
                     <ImArrowLeft onClick={() => {
                         setTimeout(() => {
-                            if (imgSrcIndex - 1 == -1) {
+                            if (imgSrcIndex - 1 === -1) {
                                 setImgSrcIndex(imgSrcs.length - 1);
                             }
                             else {
@@ -72,7 +72,7 @@ export default React.memo(function Gallery({ shift, setShift }) {
                     }} />
                     <ImArrowRight onClick={() => {
                         setTimeout(() => {
-                            if (imgSrcIndex + 1 == imgSrcs.length) {
+                            if (imgSrcIndex + 1 === imgSrcs.length) {
                                 setImgSrcIndex(0);
                             }
                             else {

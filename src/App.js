@@ -10,10 +10,10 @@ export default React.memo(function App() {
     window.scrollTo(0, 0);
   };
   useEffect(() => {
-    if (window.location.pathname == '/gallery') {
+    if (window.location.pathname === '/gallery') {
       setShift(' gallery');
     }
-    if (window.location.pathname == '/blog') {
+    if (window.location.pathname === '/blog') {
       setShift(' blog');
     }
   }, [])
