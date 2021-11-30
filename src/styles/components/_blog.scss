@@ -1,0 +1,14 @@
+.blog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    bottom: 90vh;
+    left: 90vw;
+    z-index: 1;
+    .navSquare{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}

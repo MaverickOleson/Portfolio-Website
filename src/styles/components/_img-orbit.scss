@@ -8,7 +8,7 @@
     justify-content: center;
     position: relative;
     margin: auto;
-    margin-top: 12%;
+    margin-top: 13vw;
     &.orbit{
         animation: orbit 0.5s ease forwards;
     }
@@ -68,51 +68,51 @@
         }
         @keyframes orbit-fade-in {
             0%{
-                transform: rotateZ(-45deg) translateX(-23.5vw);
+                transform: rotateZ(-45deg) translateX($spread);
                 opacity: 0;
             }
             100%{
-                transform: translateX(-23.5vw);
+                transform: translateX($spread);
                 opacity: 1;
             }
         }
         @keyframes rotate1 {
             0%{
-                transform: translateX(-23.5vw)
+                transform: translateX($spread)
             }
             100%{
-                transform: rotateZ(45deg) translateX(-23.5vw) rotateZ(-45deg);
+                transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
         }
         @keyframes rotate2 {
             0%{
-                transform: rotateZ(45deg) translateX(-23.5vw) rotateZ(-45deg);
+                transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
             100%{
-                transform: rotateZ(90deg) translateX(-23.5vw) rotateZ(-90deg);
+                transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
             }
         }
         @keyframes rotate3 {
             0%{
-                transform: rotateZ(90deg) translateX(-23.5vw) rotateZ(-90deg);
+                transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
             }
             100%{
-                transform: rotateZ(135deg) translateX(-23.5vw) rotateZ(-135deg);
+                transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
         }
         @keyframes rotate4 {
             0%{
-                transform: rotateZ(135deg) translateX(-23.5vw) rotateZ(-135deg);
+                transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
             100%{
-                transform: rotateZ(180deg) translateX(-23.5vw) rotateZ(-180deg);
+                transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
             }
         }
     }
     .current{
         position: static;
-        width: 35vw;
-        height: 35vw;
+        width: 34vw;
+        height: 34vw;
         box-sizing: border-box;
         border: 10px solid white;
     }

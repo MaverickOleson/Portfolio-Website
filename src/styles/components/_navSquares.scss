@@ -1,25 +1,6 @@
 .navSquare{
-    position: fixed;
+    position: absolute  ;
     background-color: black;
     color: white;
     margin: 0;
-    &:nth-of-type(2){
-        right: 0;
-    }
-    &:nth-of-type(3){
-        bottom: 0;
-    }
-    &:nth-of-type(4){
-        right: 0;
-        bottom: 0;
-        background: blue;
-    }
-    @keyframes move1 {
-        0%{
-            transform: translateX(0) translateY(0);
-        }
-        100%{
-            transform: translateX(100) translateY(100);
-        }
-    }
 }

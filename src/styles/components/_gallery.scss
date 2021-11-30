@@ -1,11 +1,7 @@
 @import './img-orbit';
-*::-webkit-scrollbar{
-    display: none;
-}
 .gallery{
     background: blue;
     z-index: 1;
     top: 90vh;
     left: 90vw;
-    position: fixed;
 }

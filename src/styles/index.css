@@ -44,19 +44,50 @@ body #root {
   height: 100%;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .app {
   width: 100%;
   min-height: 100vh;
   height: 100%;
+  background-color: black;
+  text-align: center;
+}
+.app.blog {
+  transform: translateX(-90vw) translateY(90vh);
 }
 .app.gallery {
-  transform: translateX(-180vw) translateY(-180vh);
+  transform: translateX(-90vw) translateY(-90vh);
+}
+.app.shift2F {
+  animation: shift2F 0.75s ease forwards;
+}
+.app.shift2B {
+  animation: shift2B 0.75s ease forwards;
 }
 .app.shift4F {
-  animation: shift4F 1s ease forwards;
+  animation: shift4F 0.75s ease forwards;
 }
 .app.shift4B {
-  animation: shift4B 1s ease forwards;
+  animation: shift4B 0.75s ease forwards;
+}
+@keyframes shift2F {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-90vw) translateY(90vh);
+  }
+}
+@keyframes shift2B {
+  0% {
+    transform: translateX(-90vw) translateY(90vh);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
 }
 @keyframes shift4F {
   0% {
@@ -75,6 +106,22 @@ body #root {
   }
 }
 
+.blog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  bottom: 90vh;
+  left: 90vw;
+  z-index: 1;
+}
+
+.blog .navSquare {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 .img-orbit {
   width: fit-content;
   height: fit-content;
@@ -84,7 +131,7 @@ body #root {
   justify-content: center;
   position: relative;
   margin: auto;
-  margin-top: 12%;
+  margin-top: 13vw;
 }
 
 .img-orbit.orbit {
@@ -159,50 +206,50 @@ body #root {
 
 @keyframes orbit-fade-in {
   0% {
-    transform: rotateZ(-45deg) translateX(-23.5vw);
+    transform: rotateZ(-45deg) translateX(-25vw);
     opacity: 0;
   }
   100% {
-    transform: translateX(-23.5vw);
+    transform: translateX(-25vw);
     opacity: 1;
   }
 }
 @keyframes rotate1 {
   0% {
-    transform: translateX(-23.5vw);
+    transform: translateX(-25vw);
   }
   100% {
-    transform: rotateZ(45deg) translateX(-23.5vw) rotateZ(-45deg);
+    transform: rotateZ(45deg) translateX(-25vw) rotateZ(-45deg);
   }
 }
 @keyframes rotate2 {
   0% {
-    transform: rotateZ(45deg) translateX(-23.5vw) rotateZ(-45deg);
+    transform: rotateZ(45deg) translateX(-25vw) rotateZ(-45deg);
   }
   100% {
-    transform: rotateZ(90deg) translateX(-23.5vw) rotateZ(-90deg);
+    transform: rotateZ(90deg) translateX(-25vw) rotateZ(-90deg);
   }
 }
 @keyframes rotate3 {
   0% {
-    transform: rotateZ(90deg) translateX(-23.5vw) rotateZ(-90deg);
+    transform: rotateZ(90deg) translateX(-25vw) rotateZ(-90deg);
   }
   100% {
-    transform: rotateZ(135deg) translateX(-23.5vw) rotateZ(-135deg);
+    transform: rotateZ(135deg) translateX(-25vw) rotateZ(-135deg);
   }
 }
 @keyframes rotate4 {
   0% {
-    transform: rotateZ(135deg) translateX(-23.5vw) rotateZ(-135deg);
+    transform: rotateZ(135deg) translateX(-25vw) rotateZ(-135deg);
   }
   100% {
-    transform: rotateZ(180deg) translateX(-23.5vw) rotateZ(-180deg);
+    transform: rotateZ(180deg) translateX(-25vw) rotateZ(-180deg);
   }
 }
 .img-orbit .current {
   position: static;
-  width: 35vw;
-  height: 35vw;
+  width: 34vw;
+  height: 34vw;
   box-sizing: border-box;
   border: 10px solid white;
 }
@@ -216,51 +263,46 @@ body #root {
   margin: 10px;
 }
 
-*::-webkit-scrollbar {
-  display: none;
-}
-
 .gallery {
   background: blue;
   z-index: 1;
   top: 90vh;
   left: 90vw;
-  position: fixed;
 }
 
 .navSquare {
-  position: fixed;
+  position: absolute;
   background-color: black;
   color: white;
   margin: 0;
 }
 
-.navSquare:nth-of-type(2) {
-  right: 0;
+.slider {
+  width: 33%;
+  height: 15px;
+  position: relative;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border: 2px solid black;
+  box-shadow: black;
 }
 
-.navSquare:nth-of-type(3) {
-  bottom: 0;
+.slider .knob {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) translateX(-50%);
+  background-color: black;
 }
 
-.navSquare:nth-of-type(4) {
-  right: 0;
-  bottom: 0;
-  background: blue;
-}
-
-@keyframes move1 {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  100% {
-    transform: translateX(100) translateY(100);
-  }
-}
 .web-page {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   overflow-y: auto;
 }
 

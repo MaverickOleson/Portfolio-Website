@@ -29,14 +29,12 @@ export default React.memo(function Gallery({ shift, setShift }) {
                     setShift(' shift4F');
                     setTimeout(() => {
                         navigation('/gallery');
-                        sessionStorage.setItem('shift', ' gallery');
                     }, 500);
                 }
                 else {
                     setShift(' shift4B');
                     setTimeout(() => {
                         navigation('/');
-                        sessionStorage.setItem('shift', '');
                     }, 500);
                 }
                 // document.getElementsByClassName('gallery')[0].style.animation = 'gallery-open 0.5s forwards';
@@ -52,7 +50,12 @@ export default React.memo(function Gallery({ shift, setShift }) {
                 <div className='orbiters'>
                     <ImArrowLeft onClick={() => {
                         setTimeout(() => {
-                            setImgSrcIndex(imgSrcIndex - 1);
+                            if (imgSrcIndex - 1 == -1) {
+                                setImgSrcIndex(imgSrcs.length - 1);
+                            }
+                            else {
+                                setImgSrcIndex(imgSrcIndex - 1)
+                            }
                             img6.current.classList.remove('disappear');
                             img1.current.classList.remove('fade-in');
                             img2.current.classList.remove('rotate1');
@@ -60,12 +63,12 @@ export default React.memo(function Gallery({ shift, setShift }) {
                             img4.current.classList.remove('rotate3');
                             img5.current.classList.remove('rotate4');
                         }, 500);
-                        img6.current.classList.add('disappear')
-                        img1.current.classList.add('fade-in')
-                        img2.current.classList.add('rotate1')
-                        img3.current.classList.add('rotate2')
-                        img4.current.classList.add('rotate3')
-                        img5.current.classList.add('rotate4')
+                        img6.current.classList.add('disappear');
+                        img1.current.classList.add('fade-in');
+                        img2.current.classList.add('rotate1');
+                        img3.current.classList.add('rotate2');
+                        img4.current.classList.add('rotate3');
+                        img5.current.classList.add('rotate4');
                     }} />
                     <ImArrowRight onClick={() => {
                         setTimeout(() => {
@@ -82,12 +85,12 @@ export default React.memo(function Gallery({ shift, setShift }) {
                             img4.current.classList.remove('rotate3');
                             img5.current.classList.remove('rotate4');
                         }, 500);
-                        img6.current.classList.add('disappear')
-                        img1.current.classList.add('fade-in')
-                        img2.current.classList.add('rotate1')
-                        img3.current.classList.add('rotate2')
-                        img4.current.classList.add('rotate3')
-                        img5.current.classList.add('rotate4')
+                        img6.current.classList.add('disappear');
+                        img1.current.classList.add('fade-in');
+                        img2.current.classList.add('rotate1');
+                        img3.current.classList.add('rotate2');
+                        img4.current.classList.add('rotate3');
+                        img5.current.classList.add('rotate4');
                     }} />
                 </div>
             </div>
