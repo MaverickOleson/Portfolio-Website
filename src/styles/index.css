@@ -238,17 +238,32 @@ body #root {
 }
 
 .img-orbit {
-  width: fit-content;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   margin: auto;
-  margin-top: 12vw;
 }
 
+@media (orientation: landscape) {
+  .img-orbit {
+    width: 100vh;
+    height: 100vh;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 967px) {
+  .img-orbit {
+    width: 78vh;
+    height: 80vh;
+  }
+}
+@media (orientation: portrait) {
+  .img-orbit {
+    width: 75vw;
+    height: 75vw;
+  }
+}
 .img-orbit.orbit {
   animation: orbit 0.5s ease forwards;
 }
@@ -262,37 +277,38 @@ body #root {
   }
 }
 .img-orbit img {
-  width: 10vw;
-  height: 10vw;
+  width: 23%;
+  height: 23%;
   position: absolute;
   transform-origin: center;
   border-radius: 50%;
   object-fit: cover;
+  transform: translateY(85px);
 }
 
 .img-orbit img:nth-of-type(1) {
-  transform: rotateZ(-45deg) translateX(-25vw);
+  transform: rotateZ(-45deg) translateX(-212%);
   opacity: 0;
 }
 
 .img-orbit img:nth-of-type(2) {
-  transform: translateX(-25vw);
+  transform: translateY(85px) translateX(-212%);
 }
 
 .img-orbit img:nth-of-type(3) {
-  transform: rotateZ(45deg) translateX(-25vw) rotateZ(-45deg);
+  transform: translateY(85px) rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
 }
 
 .img-orbit img:nth-of-type(4) {
-  transform: rotateZ(90deg) translateX(-25vw) rotateZ(-90deg);
+  transform: translateY(85px) rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
 }
 
 .img-orbit img:nth-of-type(5) {
-  transform: rotateZ(135deg) translateX(-25vw) rotateZ(-135deg);
+  transform: translateY(85px) rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
 }
 
 .img-orbit img:nth-of-type(6) {
-  transform: rotateZ(180deg) translateX(-25vw) rotateZ(-180deg);
+  transform: translateY(85px) rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
 }
 
 .img-orbit img.fade-in {
@@ -321,50 +337,50 @@ body #root {
 
 @keyframes orbit-fade-in {
   0% {
-    transform: rotateZ(-45deg) translateX(-25vw);
+    transform: rotateZ(-45deg) translateX(-212%);
     opacity: 0;
   }
   100% {
-    transform: translateX(-25vw);
+    transform: translateX(-212%);
     opacity: 1;
   }
 }
 @keyframes rotate1 {
   0% {
-    transform: translateX(-25vw);
+    transform: translateX(-212%);
   }
   100% {
-    transform: rotateZ(45deg) translateX(-25vw) rotateZ(-45deg);
+    transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
   }
 }
 @keyframes rotate2 {
   0% {
-    transform: rotateZ(45deg) translateX(-25vw) rotateZ(-45deg);
+    transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
   }
   100% {
-    transform: rotateZ(90deg) translateX(-25vw) rotateZ(-90deg);
+    transform: rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
   }
 }
 @keyframes rotate3 {
   0% {
-    transform: rotateZ(90deg) translateX(-25vw) rotateZ(-90deg);
+    transform: rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
   }
   100% {
-    transform: rotateZ(135deg) translateX(-25vw) rotateZ(-135deg);
+    transform: rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
   }
 }
 @keyframes rotate4 {
   0% {
-    transform: rotateZ(135deg) translateX(-25vw) rotateZ(-135deg);
+    transform: rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
   }
   100% {
-    transform: rotateZ(180deg) translateX(-25vw) rotateZ(-180deg);
+    transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
   }
 }
 .img-orbit .current {
   position: static;
-  width: 34vw;
-  height: 34vw;
+  width: 64%;
+  height: 64%;
   box-sizing: border-box;
   border: 10px solid white;
 }

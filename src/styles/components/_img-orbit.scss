@@ -1,124 +1,138 @@
-.img-orbit{
+.img-orbit {
     // all: unset;
-    width: fit-content;
-    height: fit-content;
+    @media (orientation: landscape) {
+        width: 100vh;
+        height: 100vh;
+        @media screen and (max-width: 967px) {
+            width: 78vh;
+            height: 80vh;
+        }
+    }
+    @media (orientation: portrait) {
+        width: 75vw;
+        height: 75vw;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     margin: auto;
-    margin-top: 12vw;
-    &.orbit{
+    &.orbit {
         animation: orbit 0.5s ease forwards;
     }
     @keyframes orbit {
-        0%{
+        0% {
             transform: rotateZ(0deg);
         }
-        100%{
+        100% {
             transform: rotateZ(45deg);
         }
     }
-    img{
+    img {
         // all: unset;
-        width: 10vw;
-        height: 10vw;
+        width: 23%;
+        height: 23%;
         position: absolute;
         transform-origin: center;
         border-radius: 50%;
         object-fit: cover;
-        $spread: -25vw;
-        &:nth-of-type(1){
+        $spread: -212%;
+        transform: translateY(85px);
+        &:nth-of-type(1) {
             transform: rotateZ(-45deg) translateX($spread);
             opacity: 0;
         }
-        &:nth-of-type(2){
-            transform: translateX($spread);
+        &:nth-of-type(2) {
+            transform: translateY(85px) translateX($spread);
         }
-        &:nth-of-type(3){
-            transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
+        &:nth-of-type(3) {
+            transform: translateY(85px) rotateZ(45deg) translateX($spread)
+                rotateZ(-45deg);
         }
-        &:nth-of-type(4){
-            transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
+        &:nth-of-type(4) {
+            transform: translateY(85px) rotateZ(90deg) translateX($spread)
+                rotateZ(-90deg);
         }
-        &:nth-of-type(5){
-            transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
+        &:nth-of-type(5) {
+            transform: translateY(85px) rotateZ(135deg) translateX($spread)
+                rotateZ(-135deg);
         }
-        &:nth-of-type(6){
-            transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
+        &:nth-of-type(6) {
+            transform: translateY(85px) rotateZ(180deg) translateX($spread)
+                rotateZ(-180deg);
         }
-        &.fade-in{
+        &.fade-in {
             animation: orbit-fade-in 0.5s forwards;
         }
-        &.rotate1{
+        &.rotate1 {
             animation: rotate1 0.5s forwards;
         }
-        &.rotate2{
+        &.rotate2 {
             animation: rotate2 0.5s forwards;
         }
-        &.rotate3{
+        &.rotate3 {
             animation: rotate3 0.5s forwards;
         }
-        &.rotate4{
+        &.rotate4 {
             animation: rotate4 0.5s forwards;
         }
-        &.disappear{
+        &.disappear {
             display: none;
         }
         @keyframes orbit-fade-in {
-            0%{
+            0% {
                 transform: rotateZ(-45deg) translateX($spread);
                 opacity: 0;
             }
-            100%{
+            100% {
                 transform: translateX($spread);
                 opacity: 1;
             }
         }
         @keyframes rotate1 {
-            0%{
-                transform: translateX($spread)
+            0% {
+                transform: translateX($spread);
             }
-            100%{
+            100% {
                 transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
         }
         @keyframes rotate2 {
-            0%{
+            0% {
                 transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
-            100%{
+            100% {
                 transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
             }
         }
         @keyframes rotate3 {
-            0%{
+            0% {
                 transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
             }
-            100%{
+            100% {
                 transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
         }
         @keyframes rotate4 {
-            0%{
+            0% {
                 transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
-            100%{
+            100% {
                 transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
             }
         }
     }
-    .current{
+    .current {
         position: static;
-        width: 34vw;
-        height: 34vw;
+        width: 64%;
+        height: 64%;
         box-sizing: border-box;
         border: 10px solid white;
     }
-    .orbiters{
+    .orbiters {
         width: fit-content;
-        *{
+        * {
             font-size: 2vw;
             margin: 10px;
         }
