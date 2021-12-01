@@ -6,7 +6,7 @@ export default React.memo(function Blog({ setShift }) {
     const navigation = useNavigate();
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
-    const posts = ['1', '2', '3', '4'];
+    const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
     useEffect(() => {
         if (window.location.pathname === '/') {
             setNavText('Blog');
@@ -19,23 +19,27 @@ export default React.memo(function Blog({ setShift }) {
         return posts[Math.floor(point / 100 * posts.length)] || posts[posts.length - 1];
     }
     return (
-        <div className='blog web-page'>
+        <div className='aboutMe web-page'>
             <h1 className='navSquare' onClick={() => {
                 if (window.location.pathname === '/') {
-                    setShift(' shift1F');
+                    setShift(' shift2F');
                     setTimeout(() => {
-                        navigation('/blog');
+                        navigation('/aboutMe');
                     }, 500);
                 }
                 else {
-                    setShift(' shift1B');
+                    setShift(' shift2B');
                     setTimeout(() => {
                         navigation('/');
                     }, 500);
                 }
             }}>{navText}</h1>
+            <div className='info'>
+                <p>{switchPost()[0]}</p>
+                <img />
+                <p>{switchPost()[1]}</p>
+            </div>
             <Slider pos={pos} setPos={setPos} />
-            {switchPost()}
         </div >
     )
 });

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function Slider() {
-    const [pos, setPos] = useState(0);
+export default function Slider({ pos, setPos }) {
     const slideRef = useRef();
     function slider(e1) {
         function slide(e2) {
@@ -16,17 +15,15 @@ export default function Slider() {
             document.removeEventListener('pointermove', slide);
             document.removeEventListener('pointerup', remove);
         }
-        if(e1.target.className === 'knob'){
+        if (e1.target.className === 'knob') {
             document.addEventListener('pointermove', slide);
             document.addEventListener('pointerup', remove);
-        }else{
+        } else {
             setPos((e1.clientX - slideRef.current.offsetLeft) / (slideRef.current.offsetWidth / 100));
             document.addEventListener('pointermove', slide);
             document.addEventListener('pointerup', remove);
         }
     }
-    useEffect(() => {
-    })
     return (
         <div ref={slideRef} onPointerDown={(e1) => { slider(e1) }} className='slider'>
             <div className='knob' style={{ left: `${pos}%` }} />

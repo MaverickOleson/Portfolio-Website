@@ -1,15 +1,15 @@
-.blog{
+.workExp{
+    top: 90vh;
+    right: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: lime;
     color:azure;
-    bottom: 90vh;
-    left: 90vw;
     .navSquare{
         position: absolute;
-        bottom: 0;
-        left: 0;
+        top: 0;
+        right: 0;
     }
 }
