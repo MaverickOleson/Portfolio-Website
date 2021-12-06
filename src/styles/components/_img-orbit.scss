@@ -1,16 +1,12 @@
 .img-orbit {
     // all: unset;
     @media (orientation: landscape) {
-        width: 100vh;
-        height: 100vh;
-        @media screen and (max-width: 967px) {
-            width: 78vh;
-            height: 80vh;
-        }
+        width: 96vh;
+        transform: translateY(56.5vh);
     }
     @media (orientation: portrait) {
         width: 75vw;
-        height: 75vw;
+        transform: translateY(50vw);
     }
     display: flex;
     flex-direction: column;
@@ -32,35 +28,29 @@
     img {
         // all: unset;
         width: 23%;
-        height: 23%;
         position: absolute;
         transform-origin: center;
         border-radius: 50%;
         object-fit: cover;
         $spread: -212%;
-        transform: translateY(85px);
         &:nth-of-type(1) {
-            transform: rotateZ(-45deg) translateX($spread);
+            transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
             opacity: 0;
         }
         &:nth-of-type(2) {
-            transform: translateY(85px) translateX($spread);
+            transform: translateX($spread);
         }
         &:nth-of-type(3) {
-            transform: translateY(85px) rotateZ(45deg) translateX($spread)
-                rotateZ(-45deg);
+            transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
         }
         &:nth-of-type(4) {
-            transform: translateY(85px) rotateZ(90deg) translateX($spread)
-                rotateZ(-90deg);
+            transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
         }
         &:nth-of-type(5) {
-            transform: translateY(85px) rotateZ(135deg) translateX($spread)
-                rotateZ(-135deg);
+            transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
         }
         &:nth-of-type(6) {
-            transform: translateY(85px) rotateZ(180deg) translateX($spread)
-                rotateZ(-180deg);
+            transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
         }
         &.fade-in {
             animation: orbit-fade-in 0.5s forwards;
@@ -82,17 +72,17 @@
         }
         @keyframes orbit-fade-in {
             0% {
-                transform: rotateZ(-45deg) translateX($spread);
+                transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
                 opacity: 0;
             }
             100% {
-                transform: translateX($spread);
+                transform: rotateZ(0) translateX($spread) rotateZ(0);
                 opacity: 1;
             }
         }
         @keyframes rotate1 {
             0% {
-                transform: translateX($spread);
+                transform: rotateZ(0) translateX($spread);
             }
             100% {
                 transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
@@ -124,16 +114,18 @@
         }
     }
     .current {
-        position: static;
-        width: 64%;
-        height: 64%;
+        width: 68%;
         box-sizing: border-box;
         border: 10px solid white;
     }
     .orbiters {
         width: fit-content;
+        transform: translateY(36vh);
+        @media (orientation: portrait) {
+            transform: translateY(35vw);
+        }
         * {
-            font-size: 2vw;
+            font-size: 30px;
             margin: 10px;
         }
     }

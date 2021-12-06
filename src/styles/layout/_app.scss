@@ -1,113 +1,140 @@
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
     display: none;
 }
-.app{
+.app {
     width: 100%;
     min-height: 100vh;
     height: 100%;
     background-color: black;
     text-align: center;
-    $page-spread: 90;
-    img{
+    $page-spread: 80;
+    .gallery {
+        top: $page-spread * 1vh;
+        right: -$page-spread * 1vw;
+    }
+    .blog {
+        top: -$page-spread * 1vh;
+        right: -$page-spread * 1vw;
+    }
+    .workExp {
+        top: $page-spread * 1vh;
+        right: $page-spread * 1vw;
+    }
+    .aboutMe {
+        top: -$page-spread * 1vh;
+        right: $page-spread * 1vw;
+    }
+    img {
         background-color: white;
     }
-    &.blog{
-        transform: translateX(-90vw) translateY(90vh);   
+    &.blog {
+        transform: translateX(-$page-spread * 1vw)
+            translateY($page-spread * 1vh);
     }
-    &.aboutMe{
-        transform: translateX(90vw) translateY(90vh);
+    &.aboutMe {
+        transform: translateX($page-spread * 1vw) translateY($page-spread * 1vh);
     }
-    &.workExp{
-        transform: translateX(90vw) translateY(-90vh);
+    &.workExp {
+        transform: translateX($page-spread * 1vw)
+            translateY(-$page-spread * 1vh);
     }
-    &.gallery{
-        transform: translateX(-90vw) translateY(-90vh);
+    &.gallery {
+        transform: translateX(-$page-spread * 1vw)
+            translateY(-$page-spread * 1vh);
     }
-    &.shift1F{
+    &.shift1F {
         animation: shift1F 0.75s ease forwards;
     }
-    &.shift1B{
+    &.shift1B {
         animation: shift1B 0.75s ease forwards;
     }
-    &.shift2F{
+    &.shift2F {
         animation: shift2F 0.75s ease forwards;
     }
-    &.shift2B{
+    &.shift2B {
         animation: shift2B 0.75s ease forwards;
     }
-    &.shift3F{
+    &.shift3F {
         animation: shift3F 0.75s ease forwards;
     }
-    &.shift3B{
+    &.shift3B {
         animation: shift3B 0.75s ease forwards;
     }
-    &.shift4F{
+    &.shift4F {
         animation: shift4F 0.75s ease forwards;
     }
-    &.shift4B{
+    &.shift4B {
         animation: shift4B 0.75s ease forwards;
     }
     @keyframes shift1F {
-        0%{
+        0% {
             transform: translateX(0) translateY(0);
         }
-        100%{
-            transform: translateX(-90vw) translateY(90vh);
+        100% {
+            transform: translateX(-$page-spread * 1vw)
+                translateY($page-spread * 1vh);
         }
     }
     @keyframes shift1B {
-        0%{
-            transform: translateX(-90vw) translateY(90vh);
+        0% {
+            transform: translateX(-$page-spread * 1vw)
+                translateY($page-spread * 1vh);
         }
-        100%{
+        100% {
             transform: translateX(0) translateY(0);
         }
     }
     @keyframes shift2F {
-        0%{
+        0% {
             transform: translateX(0) translateY(0);
         }
-        100%{
-            transform: translateX(90vw) translateY(90vh);
+        100% {
+            transform: translateX($page-spread * 1vw)
+                translateY($page-spread * 1vh);
         }
     }
     @keyframes shift2B {
-        0%{
-            transform: translateX(90vw) translateY(90vh);
+        0% {
+            transform: translateX($page-spread * 1vw)
+                translateY($page-spread * 1vh);
         }
-        100%{
+        100% {
             transform: translateX(0) translateY(0);
         }
     }
     @keyframes shift3F {
-        0%{
+        0% {
             transform: translateX(0) translateY(0);
         }
-        100%{
-            transform: translateX(90vw) translateY(-90vh);
+        100% {
+            transform: translateX($page-spread * 1vw)
+                translateY(-$page-spread * 1vh);
         }
     }
     @keyframes shift3B {
-        0%{
-            transform: translateX(90vw) translateY(-90vh);
+        0% {
+            transform: translateX($page-spread * 1vw)
+                translateY(-$page-spread * 1vh);
         }
-        100%{
+        100% {
             transform: translateX(0) translateY(0);
         }
     }
     @keyframes shift4F {
-        0%{
+        0% {
             transform: translateX(0) translateY(0);
         }
-        100%{
-            transform: translateX(-90vw) translateY(-90vh);
+        100% {
+            transform: translateX(-$page-spread * 1vw)
+                translateY(-$page-spread * 1vh);
         }
     }
     @keyframes shift4B {
-        0%{
-            transform: translateX(-90vw) translateY(-90vh);
+        0% {
+            transform: translateX(-$page-spread * 1vw)
+                translateY(-$page-spread * 1vh);
         }
-        100%{
+        100% {
             transform: translateX(0) translateY(0);
         }
     }

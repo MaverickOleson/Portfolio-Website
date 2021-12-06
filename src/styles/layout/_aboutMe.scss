@@ -1,21 +1,19 @@
-.aboutMe{
-    bottom: 90vh;
-    right: 90vw;
+.aboutMe {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: cyan;
-    color:azure;
-    .navSquare{
+    color: azure;
+    .navSquare {
         position: absolute;
         bottom: 0;
         right: 0;
     }
-    .info{
+    .info {
         display: flex;
         flex-direction: row;
-        img{
+        img {
             width: 40vh;
             height: 40vh;
             border-radius: 100%;

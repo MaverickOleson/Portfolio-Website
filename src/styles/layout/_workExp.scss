@@ -1,13 +1,11 @@
-.workExp{
-    top: 90vh;
-    right: 90vw;
+.workExp {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: lime;
-    color:azure;
-    .navSquare{
+    color: azure;
+    .navSquare {
         position: absolute;
         top: 0;
         right: 0;
