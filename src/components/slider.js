@@ -4,6 +4,7 @@ export default function Slider({ pos, setPos }) {
     const slideRef = useRef();
     function slider(e1) {
         function slide(e2) {
+            console.log('j')
             if (e2.clientX > slideRef.current.offsetWidth + slideRef.current.offsetLeft) setPos(100);
             else if (e2.clientX < slideRef.current.offsetLeft) setPos(0);
             else {

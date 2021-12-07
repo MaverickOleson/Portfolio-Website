@@ -7,24 +7,28 @@ import WorkExp from './pages/workExp';
 import Gallery from './pages/gallery';
 
 export default React.memo(function App() {
-  const [shift, setShift] = useState('');
+  const [shift, setShift] = useState(window.location.pathname.replace('/', ' '));
   document.onscroll = () => {
     window.scrollTo(0, 0);
   };
-  useEffect(() => {
-    if (window.location.pathname === '/blog') {
-      setShift(' blog');
-    }
-    if (window.location.pathname === '/aboutMe') {
-      setShift(' aboutMe');
-    }
-    if (window.location.pathname === '/workExperience') {
-      setShift(' workExp');
-    }
-    if (window.location.pathname === '/gallery') {
-      setShift(' gallery');
-    }
-  }, [])
+  // useEffect(() => {
+  //   // alert('dsf')
+  //   if (window.location.pathname === '/') {
+  //     setShift('');
+  //   }
+  //   if (window.location.pathname === '/blog') {
+  //     setShift(' blog');
+  //   }
+  //   if (window.location.pathname === '/aboutMe') {
+  //     setShift(' aboutMe');
+  //   }
+  //   if (window.location.pathname === '/workExperience') {
+  //     setShift(' workExp');
+  //   }
+  //   if (window.location.pathname === '/gallery') {
+  //     setShift(' gallery');
+  //   }
+  // }, [])
   return (
     <div className={`app${shift}`}>
       <Home />
@@ -33,7 +37,8 @@ export default React.memo(function App() {
       <WorkExp setShift={setShift} />
       <Gallery setShift={setShift} />
       <Routes>
-        <Route exact path='/' />
+        <Route exact path='/' render={() => setShift('')} />
+        <Route path='/blog' />
         <Route path='/gallery' />
       </Routes>
     </div>
