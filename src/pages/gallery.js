@@ -55,20 +55,20 @@ export default React.memo(function Gallery({ shift, setShift }) {
                             }
                             else {
                                 setImgSrcIndex(imgSrcIndex - 1)
-                            }
-                            img6.current.classList.remove('disappear');
-                            img1.current.classList.remove('fade-in');
-                            img2.current.classList.remove('rotate1');
-                            img3.current.classList.remove('rotate2');
-                            img4.current.classList.remove('rotate3');
-                            img5.current.classList.remove('rotate4');
+                            };
+                            img1.current.classList.remove('fade-outB');
+                            img6.current.classList.remove('fade-inB')
+                            img2.current.classList.remove('rotateB1');
+                            img3.current.classList.remove('rotateB2');
+                            img4.current.classList.remove('rotateB3');
+                            img5.current.classList.remove('rotateB4');
                         }, 500);
-                        img6.current.classList.add('disappear');
-                        img1.current.classList.add('fade-in');
-                        img2.current.classList.add('rotate1');
-                        img3.current.classList.add('rotate2');
-                        img4.current.classList.add('rotate3');
-                        img5.current.classList.add('rotate4');
+                        img1.current.classList.add('fade-outB');
+                        img6.current.classList.add('fade-inB')
+                        img2.current.classList.add('rotateB1');
+                        img3.current.classList.add('rotateB2');
+                        img4.current.classList.add('rotateB3');
+                        img5.current.classList.add('rotateB4');
                     }} />
                     <ImArrowRight onClick={() => {
                         setTimeout(() => {
@@ -78,19 +78,19 @@ export default React.memo(function Gallery({ shift, setShift }) {
                             else {
                                 setImgSrcIndex(imgSrcIndex + 1)
                             }
-                            img6.current.classList.remove('disappear');
-                            img1.current.classList.remove('fade-in');
-                            img2.current.classList.remove('rotate1');
-                            img3.current.classList.remove('rotate2');
-                            img4.current.classList.remove('rotate3');
-                            img5.current.classList.remove('rotate4');
+                            img6.current.classList.remove('fade-outF');
+                            img1.current.classList.remove('fade-inF');
+                            img2.current.classList.remove('rotateF1');
+                            img3.current.classList.remove('rotateF2');
+                            img4.current.classList.remove('rotateF3');
+                            img5.current.classList.remove('rotateF4');
                         }, 500);
-                        img6.current.classList.add('disappear');
-                        img1.current.classList.add('fade-in');
-                        img2.current.classList.add('rotate1');
-                        img3.current.classList.add('rotate2');
-                        img4.current.classList.add('rotate3');
-                        img5.current.classList.add('rotate4');
+                        img6.current.classList.add('fade-outF');
+                        img1.current.classList.add('fade-inF');
+                        img2.current.classList.add('rotateF1');
+                        img3.current.classList.add('rotateF2');
+                        img4.current.classList.add('rotateF3');
+                        img5.current.classList.add('rotateF4');
                     }} />
                 </div>
             </div>

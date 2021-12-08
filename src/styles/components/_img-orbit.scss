@@ -52,25 +52,25 @@
         &:nth-of-type(6) {
             transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
         }
-        &.fade-in {
-            animation: orbit-fade-in 0.5s forwards;
+        &.fade-inF {
+            animation: orbit-fade-inF 0.5s forwards;
         }
-        &.rotate1 {
-            animation: rotate1 0.5s forwards;
+        &.fade-outF {
+            animation: orbit-fade-outF 0.5s forwards;
         }
-        &.rotate2 {
-            animation: rotate2 0.5s forwards;
+        &.rotateF1 {
+            animation: rotateF1 0.5s forwards;
         }
-        &.rotate3 {
-            animation: rotate3 0.5s forwards;
+        &.rotateF2 {
+            animation: rotateF2 0.5s forwards;
         }
-        &.rotate4 {
-            animation: rotate4 0.5s forwards;
+        &.rotateF3 {
+            animation: rotateF3 0.5s forwards;
         }
-        &.disappear {
-            display: none;
+        &.rotateF4 {
+            animation: rotateF4 0.5s forwards;
         }
-        @keyframes orbit-fade-in {
+        @keyframes orbit-fade-inF {
             0% {
                 transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
                 opacity: 0;
@@ -80,7 +80,17 @@
                 opacity: 1;
             }
         }
-        @keyframes rotate1 {
+        @keyframes orbit-fade-outF {
+            0% {
+                transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: rotateZ(225deg) translateX($spread) rotateZ(-225deg);
+                opacity: 0;
+            }
+        }
+        @keyframes rotateF1 {
             0% {
                 transform: rotateZ(0) translateX($spread);
             }
@@ -88,7 +98,7 @@
                 transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
         }
-        @keyframes rotate2 {
+        @keyframes rotateF2 {
             0% {
                 transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
@@ -96,7 +106,7 @@
                 transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
             }
         }
-        @keyframes rotate3 {
+        @keyframes rotateF3 {
             0% {
                 transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
             }
@@ -104,12 +114,82 @@
                 transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
         }
-        @keyframes rotate4 {
+        @keyframes rotateF4 {
             0% {
                 transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
             100% {
                 transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
+            }
+        }
+        &.fade-inB {
+            animation: orbit-fade-inB 0.5s forwards;
+        }
+        &.fade-outB {
+            animation: orbit-fade-outB 0.5s forwards;
+        }
+        &.rotateB1 {
+            animation: rotateB1 0.5s forwards;
+        }
+        &.rotateB2 {
+            animation: rotateB2 0.5s forwards;
+        }
+        &.rotateB3 {
+            animation: rotateB3 0.5s forwards;
+        }
+        &.rotateB4 {
+            animation: rotateB4 0.5s forwards;
+        }
+        @keyframes orbit-fade-inB {
+            0% {
+                transform: rotateZ(225deg) translateX($spread) rotateZ(-225deg);
+                opacity: 0;
+            }
+            100% {
+                transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
+                opacity: 1;
+            }
+        }
+        @keyframes orbit-fade-outB {
+            0% {
+                transform: rotateZ(0) translateX($spread) rotateZ(0);
+                opacity: 1;
+            }
+            100% {
+                transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
+                opacity: 0;
+            }
+        }
+        @keyframes rotateB1 {
+            0% {
+                transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
+            }
+            100% {
+                transform: rotateZ(0) translateX($spread);
+            }
+        }
+        @keyframes rotateB2 {
+            0% {
+                transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
+            }
+            100% {
+                transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
+            }
+        }
+        @keyframes rotateB3 {
+            0% {
+                transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
+            }
+            100% {
+                transform: rotateZ(90deg) translateX($spread) rotateZ(-90deg);
+            }
+        }
+        @keyframes rotateB4 {
+            0% {
+                transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
+            }
+            100% {
+                transform: rotateZ(135deg) translateX($spread) rotateZ(-135deg);
             }
         }
     }

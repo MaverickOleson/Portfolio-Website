@@ -1,4 +1,4 @@
-.slider{
+.slider {
     width: 33%;
     height: 15px;
     position: relative;
@@ -8,7 +8,8 @@
     border: 2px solid black;
     box-shadow: black;
     touch-action: none;
-    .knob{
+    user-select: none;
+    .knob {
         width: 35px;
         height: 35px;
         border-radius: 100%;
@@ -16,6 +17,6 @@
         top: 50%;
         left: 0;
         transform: translateY(-50%) translateX(-50%);
-        background-color:dimgray;
+        background-color: dimgray;
     }
 }

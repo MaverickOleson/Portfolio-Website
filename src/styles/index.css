@@ -54,7 +54,7 @@ body #root {
 
 .app {
   width: 100%;
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100 - 1px);
   background-color: black;
   text-align: center;
 }
@@ -317,31 +317,31 @@ body #root {
   transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
 }
 
-.img-orbit img.fade-in {
-  animation: orbit-fade-in 0.5s forwards;
+.img-orbit img.fade-inF {
+  animation: orbit-fade-inF 0.5s forwards;
 }
 
-.img-orbit img.rotate1 {
-  animation: rotate1 0.5s forwards;
+.img-orbit img.fade-outF {
+  animation: orbit-fade-outF 0.5s forwards;
 }
 
-.img-orbit img.rotate2 {
-  animation: rotate2 0.5s forwards;
+.img-orbit img.rotateF1 {
+  animation: rotateF1 0.5s forwards;
 }
 
-.img-orbit img.rotate3 {
-  animation: rotate3 0.5s forwards;
+.img-orbit img.rotateF2 {
+  animation: rotateF2 0.5s forwards;
 }
 
-.img-orbit img.rotate4 {
-  animation: rotate4 0.5s forwards;
+.img-orbit img.rotateF3 {
+  animation: rotateF3 0.5s forwards;
 }
 
-.img-orbit img.disappear {
-  display: none;
+.img-orbit img.rotateF4 {
+  animation: rotateF4 0.5s forwards;
 }
 
-@keyframes orbit-fade-in {
+@keyframes orbit-fade-inF {
   0% {
     transform: rotateZ(-45deg) translateX(-212%) rotateZ(45deg);
     opacity: 0;
@@ -351,7 +351,17 @@ body #root {
     opacity: 1;
   }
 }
-@keyframes rotate1 {
+@keyframes orbit-fade-outF {
+  0% {
+    transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateZ(225deg) translateX(-212%) rotateZ(-225deg);
+    opacity: 0;
+  }
+}
+@keyframes rotateF1 {
   0% {
     transform: rotateZ(0) translateX(-212%);
   }
@@ -359,7 +369,7 @@ body #root {
     transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
   }
 }
-@keyframes rotate2 {
+@keyframes rotateF2 {
   0% {
     transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
   }
@@ -367,7 +377,7 @@ body #root {
     transform: rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
   }
 }
-@keyframes rotate3 {
+@keyframes rotateF3 {
   0% {
     transform: rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
   }
@@ -375,12 +385,88 @@ body #root {
     transform: rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
   }
 }
-@keyframes rotate4 {
+@keyframes rotateF4 {
   0% {
     transform: rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
   }
   100% {
     transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
+  }
+}
+.img-orbit img.fade-inB {
+  animation: orbit-fade-inB 0.5s forwards;
+}
+
+.img-orbit img.fade-outB {
+  animation: orbit-fade-outB 0.5s forwards;
+}
+
+.img-orbit img.rotateB1 {
+  animation: rotateB1 0.5s forwards;
+}
+
+.img-orbit img.rotateB2 {
+  animation: rotateB2 0.5s forwards;
+}
+
+.img-orbit img.rotateB3 {
+  animation: rotateB3 0.5s forwards;
+}
+
+.img-orbit img.rotateB4 {
+  animation: rotateB4 0.5s forwards;
+}
+
+@keyframes orbit-fade-inB {
+  0% {
+    transform: rotateZ(225deg) translateX(-212%) rotateZ(-225deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
+    opacity: 1;
+  }
+}
+@keyframes orbit-fade-outB {
+  0% {
+    transform: rotateZ(0) translateX(-212%) rotateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateZ(-45deg) translateX(-212%) rotateZ(45deg);
+    opacity: 0;
+  }
+}
+@keyframes rotateB1 {
+  0% {
+    transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
+  }
+  100% {
+    transform: rotateZ(0) translateX(-212%);
+  }
+}
+@keyframes rotateB2 {
+  0% {
+    transform: rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
+  }
+  100% {
+    transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
+  }
+}
+@keyframes rotateB3 {
+  0% {
+    transform: rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
+  }
+  100% {
+    transform: rotateZ(90deg) translateX(-212%) rotateZ(-90deg);
+  }
+}
+@keyframes rotateB4 {
+  0% {
+    transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
+  }
+  100% {
+    transform: rotateZ(135deg) translateX(-212%) rotateZ(-135deg);
   }
 }
 .img-orbit .current {
@@ -406,8 +492,6 @@ body #root {
 
 .gallery {
   background: blue;
-  width: 100vw;
-  height: 100vh;
 }
 
 .navSquare {
@@ -427,6 +511,7 @@ body #root {
   border: 2px solid black;
   box-shadow: black;
   touch-action: none;
+  user-select: none;
 }
 
 .slider .knob {
