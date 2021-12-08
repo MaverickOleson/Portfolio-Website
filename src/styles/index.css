@@ -36,7 +36,7 @@ div{
   }
 }
 body {
-  height: 100vh;
+  min-height: 100%;
   margin: 0;
   overflow-x: hidden;
   background-color: #000000;
@@ -44,7 +44,8 @@ body {
   background-attachment: fixed;
 }
 body #root {
-  height: 100%;
+  overflow: hidden;
+  min-height: 100%;
 }
 
 *::-webkit-scrollbar {
@@ -53,30 +54,29 @@ body #root {
 
 .app {
   width: 100%;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100);
   background-color: black;
   text-align: center;
 }
 
-.app .gallery {
-  top: 80vh;
-  right: -80vw;
-}
-
 .app .blog {
-  top: -80vh;
-  right: -80vw;
-}
-
-.app .workExp {
-  top: 80vh;
-  right: 80vw;
+  bottom: calc(var(--vh, 1vh) * 80);
+  left: calc(100vw - 20vh);
 }
 
 .app .aboutMe {
-  top: -80vh;
-  right: 80vw;
+  bottom: calc(var(--vh, 1vh) * 80);
+  right: calc(100vw - 20vh);
+}
+
+.app .workExperience {
+  top: calc(var(--vh, 1vh) * 80);
+  right: calc(100vw - 20vh);
+}
+
+.app .gallery {
+  top: calc(var(--vh, 1vh) * 80);
+  left: calc(100vw - 20vh);
 }
 
 .app img {
@@ -84,19 +84,19 @@ body #root {
 }
 
 .app.blog {
-  transform: translateX(-80vw) translateY(80vh);
+  transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
 }
 
 .app.aboutMe {
-  transform: translateX(80vw) translateY(80vh);
+  transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
 }
 
-.app.workExp {
-  transform: translateX(80vw) translateY(-80vh);
+.app.workExperience {
+  transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
 }
 
 .app.gallery {
-  transform: translateX(-80vw) translateY(-80vh);
+  transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
 }
 
 .app.shift1F {
@@ -136,12 +136,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateX(-80vw) translateY(80vh);
+    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
   }
 }
 @keyframes shift1B {
   0% {
-    transform: translateX(-80vw) translateY(80vh);
+    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -152,12 +152,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateX(80vw) translateY(80vh);
+    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
   }
 }
 @keyframes shift2B {
   0% {
-    transform: translateX(80vw) translateY(80vh);
+    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -168,12 +168,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateX(80vw) translateY(-80vh);
+    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
   }
 }
 @keyframes shift3B {
   0% {
-    transform: translateX(80vw) translateY(-80vh);
+    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -184,12 +184,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateX(-80vw) translateY(-80vh);
+    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
   }
 }
 @keyframes shift4B {
   0% {
-    transform: translateX(-80vw) translateY(-80vh);
+    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -221,7 +221,7 @@ body #root {
   border-radius: 100%;
 }
 
-.workExp {
+.workExperience {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,7 +230,7 @@ body #root {
   color: azure;
 }
 
-.workExp .navSquare {
+.workExperience .navSquare {
   position: absolute;
   top: 0;
   right: 0;
@@ -406,6 +406,8 @@ body #root {
 
 .gallery {
   background: blue;
+  width: 100vw;
+  height: 100vh;
 }
 
 .navSquare {
@@ -424,6 +426,7 @@ body #root {
   border-radius: 15px;
   border: 2px solid black;
   box-shadow: black;
+  touch-action: none;
 }
 
 .slider .knob {
@@ -438,8 +441,8 @@ body #root {
 }
 
 .web-page {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: fixed;
   overflow-y: auto;
   z-index: 1;

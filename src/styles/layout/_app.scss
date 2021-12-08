@@ -3,44 +3,40 @@
 }
 .app {
     width: 100%;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    min-height: calc(var(--vh, 1vh) * 100);
     background-color: black;
     text-align: center;
-    $page-spread: 80;
-    .gallery {
-        top: $page-spread * 1vh;
-        right: -$page-spread * 1vw;
-    }
+    $page-spread: 20;
     .blog {
-        top: -$page-spread * 1vh;
-        right: -$page-spread * 1vw;
-    }
-    .workExp {
-        top: $page-spread * 1vh;
-        right: $page-spread * 1vw;
+        bottom: calc(var(--vh, 1vh) * 80);
+        left: calc(100vw - 20vh);
     }
     .aboutMe {
-        top: -$page-spread * 1vh;
-        right: $page-spread * 1vw;
+        bottom: calc(var(--vh, 1vh) * 80);
+        right: calc(100vw - 20vh);
+    }
+    .workExperience {
+        top: calc(var(--vh, 1vh) * 80);
+        right: calc(100vw - 20vh);
+    }
+    .gallery {
+        top: calc(var(--vh, 1vh) * 80);
+        left: calc(100vw - 20vh);
     }
     img {
         background-color: white;
     }
     &.blog {
-        transform: translateX(-$page-spread * 1vw)
-            translateY($page-spread * 1vh);
+        transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
     }
     &.aboutMe {
-        transform: translateX($page-spread * 1vw) translateY($page-spread * 1vh);
+        transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
     }
-    &.workExp {
-        transform: translateX($page-spread * 1vw)
-            translateY(-$page-spread * 1vh);
+    &.workExperience {
+        transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
     }
     &.gallery {
-        transform: translateX(-$page-spread * 1vw)
-            translateY(-$page-spread * 1vh);
+        transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
     }
     &.shift1F {
         animation: shift1F 0.75s ease forwards;
@@ -71,14 +67,12 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateX(-$page-spread * 1vw)
-                translateY($page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
         }
     }
     @keyframes shift1B {
         0% {
-            transform: translateX(-$page-spread * 1vw)
-                translateY($page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -89,14 +83,12 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateX($page-spread * 1vw)
-                translateY($page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
         }
     }
     @keyframes shift2B {
         0% {
-            transform: translateX($page-spread * 1vw)
-                translateY($page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -107,14 +99,12 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateX($page-spread * 1vw)
-                translateY(-$page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
         }
     }
     @keyframes shift3B {
         0% {
-            transform: translateX($page-spread * 1vw)
-                translateY(-$page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -125,14 +115,12 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateX(-$page-spread * 1vw)
-                translateY(-$page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
         }
     }
     @keyframes shift4B {
         0% {
-            transform: translateX(-$page-spread * 1vw)
-                translateY(-$page-spread * 1vh);
+            transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);

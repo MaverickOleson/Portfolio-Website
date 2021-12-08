@@ -18,7 +18,7 @@ export default React.memo(function Blog({ setShift }) {
         return posts[Math.floor(point / 100 * posts.length)] || posts[posts.length - 1];
     }
     return (
-        <div className='workExp web-page'>
+        <div className='workExperience web-page'>
             <h1 className='navSquare' onClick={() => {
                 if (window.location.pathname === '/') {
                     setShift(' shift3F');

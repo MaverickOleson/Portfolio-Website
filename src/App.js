@@ -7,13 +7,10 @@ import Gallery from './pages/gallery';
 
 export default React.memo(function App() {
   const [shift, setShift] = useState(window.location.pathname.replace('/', ' '));
-  document.onscroll = () => {
-    window.scrollTo(0, 0);
+  window.onpopstate = () => {
+    setShift(window.location.pathname.replace('/', ' '))
   };
-  document.documentElement.style.setProperty('--pageHeight', `${document.innerHeight * 0.01}px`);
-   window.onpopstate = () =>{
-       setShift('')
-    };
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   return (
     <div className={`app${shift}`}>
       <Home />
