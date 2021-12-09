@@ -263,7 +263,12 @@ body #root {
 @media (orientation: landscape) {
   .img-orbit {
     width: 96vh;
-    transform: translateY(56.5vh);
+    transform: translateY(57.5vh);
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 1150px) {
+  .img-orbit {
+    width: 81vh;
   }
 }
 @media (orientation: portrait) {
@@ -273,7 +278,7 @@ body #root {
   }
 }
 .img-orbit.orbit {
-  animation: orbit 0.5s ease forwards;
+  animation: orbit 0.4s linear forwards;
 }
 
 @keyframes orbit {
@@ -290,11 +295,18 @@ body #root {
   transform-origin: center;
   border-radius: 50%;
   object-fit: cover;
+  box-sizing: border-box;
+  border: 5px solid white;
 }
 
+@media (orientation: portrait) {
+  .img-orbit img {
+    border: 2px solid white;
+  }
+}
 .img-orbit img:nth-of-type(1) {
-  transform: rotateZ(-45deg) translateX(-212%) rotateZ(45deg);
-  opacity: 0;
+  transform: rotateZ(0) translateX(-212%);
+  z-index: -1;
 }
 
 .img-orbit img:nth-of-type(2) {
@@ -315,52 +327,25 @@ body #root {
 
 .img-orbit img:nth-of-type(6) {
   transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
-}
-
-.img-orbit img.fade-inF {
-  animation: orbit-fade-inF 0.5s forwards;
-}
-
-.img-orbit img.fade-outF {
-  animation: orbit-fade-outF 0.5s forwards;
+  z-index: -1;
 }
 
 .img-orbit img.rotateF1 {
-  animation: rotateF1 0.5s forwards;
+  animation: rotateF1 0.4s forwards;
 }
 
 .img-orbit img.rotateF2 {
-  animation: rotateF2 0.5s forwards;
+  animation: rotateF2 0.4s forwards;
 }
 
 .img-orbit img.rotateF3 {
-  animation: rotateF3 0.5s forwards;
+  animation: rotateF3 0.4s forwards;
 }
 
 .img-orbit img.rotateF4 {
-  animation: rotateF4 0.5s forwards;
+  animation: rotateF4 0.4s forwards;
 }
 
-@keyframes orbit-fade-inF {
-  0% {
-    transform: rotateZ(-45deg) translateX(-212%) rotateZ(45deg);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateZ(0) translateX(-212%) rotateZ(0);
-    opacity: 1;
-  }
-}
-@keyframes orbit-fade-outF {
-  0% {
-    transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
-    opacity: 1;
-  }
-  100% {
-    transform: rotateZ(225deg) translateX(-212%) rotateZ(-225deg);
-    opacity: 0;
-  }
-}
 @keyframes rotateF1 {
   0% {
     transform: rotateZ(0) translateX(-212%);
@@ -393,50 +378,22 @@ body #root {
     transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
   }
 }
-.img-orbit img.fade-inB {
-  animation: orbit-fade-inB 0.5s forwards;
-}
-
-.img-orbit img.fade-outB {
-  animation: orbit-fade-outB 0.5s forwards;
-}
-
 .img-orbit img.rotateB1 {
-  animation: rotateB1 0.5s forwards;
+  animation: rotateB1 0.4s forwards;
 }
 
 .img-orbit img.rotateB2 {
-  animation: rotateB2 0.5s forwards;
+  animation: rotateB2 0.4s forwards;
 }
 
 .img-orbit img.rotateB3 {
-  animation: rotateB3 0.5s forwards;
+  animation: rotateB3 0.4s forwards;
 }
 
 .img-orbit img.rotateB4 {
-  animation: rotateB4 0.5s forwards;
+  animation: rotateB4 0.4s forwards;
 }
 
-@keyframes orbit-fade-inB {
-  0% {
-    transform: rotateZ(225deg) translateX(-212%) rotateZ(-225deg);
-    opacity: 0;
-  }
-  100% {
-    transform: rotateZ(180deg) translateX(-212%) rotateZ(-180deg);
-    opacity: 1;
-  }
-}
-@keyframes orbit-fade-outB {
-  0% {
-    transform: rotateZ(0) translateX(-212%) rotateZ(0);
-    opacity: 1;
-  }
-  100% {
-    transform: rotateZ(-45deg) translateX(-212%) rotateZ(45deg);
-    opacity: 0;
-  }
-}
 @keyframes rotateB1 {
   0% {
     transform: rotateZ(45deg) translateX(-212%) rotateZ(-45deg);
@@ -471,23 +428,39 @@ body #root {
 }
 .img-orbit .current {
   width: 68%;
-  box-sizing: border-box;
-  border: 10px solid white;
 }
 
 .img-orbit .orbiters {
-  width: fit-content;
-  transform: translateY(36vh);
+  display: flex;
+  transform: translateY(35.8vh);
 }
 
+@media screen and (max-width: 1150px) {
+  .img-orbit .orbiters {
+    transform: translateY(32vh);
+  }
+}
 @media (orientation: portrait) {
   .img-orbit .orbiters {
-    transform: translateY(35vw);
+    transform: translateY(30vw);
   }
 }
 .img-orbit .orbiters * {
   font-size: 30px;
   margin: 10px;
+}
+
+.img-orbit .orbiters svg {
+  user-select: none;
+}
+
+.img-orbit .orbiters h1 {
+  color: white;
+}
+
+.img-orbit .text {
+  position: absolute;
+  transform: translateY(5vh) translateX(100%);
 }
 
 .gallery {

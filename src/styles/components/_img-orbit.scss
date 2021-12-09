@@ -2,7 +2,10 @@
     // all: unset;
     @media (orientation: landscape) {
         width: 96vh;
-        transform: translateY(56.5vh);
+        transform: translateY(57.5vh);
+        @media screen and (max-width: 1150px){
+            width: 81vh;
+        }
     }
     @media (orientation: portrait) {
         width: 75vw;
@@ -14,8 +17,9 @@
     justify-content: center;
     position: relative;
     margin: auto;
+    $time: 0.4s;
     &.orbit {
-        animation: orbit 0.5s ease forwards;
+        animation: orbit $time linear forwards;
     }
     @keyframes orbit {
         0% {
@@ -33,9 +37,19 @@
         border-radius: 50%;
         object-fit: cover;
         $spread: -212%;
+        box-sizing: border-box;
+        border: 5px solid white;
+        @media (orientation: portrait) {
+            border: 2px solid white;
+        }
+        // &:after {
+        //     content: "";
+        //     display: block;
+        //     padding-bottom: 100%;
+        // }
         &:nth-of-type(1) {
-            transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
-            opacity: 0;
+            transform: rotateZ(0) translateX($spread);
+            z-index: -1;
         }
         &:nth-of-type(2) {
             transform: translateX($spread);
@@ -51,44 +65,19 @@
         }
         &:nth-of-type(6) {
             transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
-        }
-        &.fade-inF {
-            animation: orbit-fade-inF 0.5s forwards;
-        }
-        &.fade-outF {
-            animation: orbit-fade-outF 0.5s forwards;
+            z-index: -1;
         }
         &.rotateF1 {
-            animation: rotateF1 0.5s forwards;
+            animation: rotateF1 $time forwards;
         }
         &.rotateF2 {
-            animation: rotateF2 0.5s forwards;
+            animation: rotateF2 $time forwards;
         }
         &.rotateF3 {
-            animation: rotateF3 0.5s forwards;
+            animation: rotateF3 $time forwards;
         }
         &.rotateF4 {
-            animation: rotateF4 0.5s forwards;
-        }
-        @keyframes orbit-fade-inF {
-            0% {
-                transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
-                opacity: 0;
-            }
-            100% {
-                transform: rotateZ(0) translateX($spread) rotateZ(0);
-                opacity: 1;
-            }
-        }
-        @keyframes orbit-fade-outF {
-            0% {
-                transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
-                opacity: 1;
-            }
-            100% {
-                transform: rotateZ(225deg) translateX($spread) rotateZ(-225deg);
-                opacity: 0;
-            }
+            animation: rotateF4 $time forwards;
         }
         @keyframes rotateF1 {
             0% {
@@ -122,43 +111,17 @@
                 transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
             }
         }
-        &.fade-inB {
-            animation: orbit-fade-inB 0.5s forwards;
-        }
-        &.fade-outB {
-            animation: orbit-fade-outB 0.5s forwards;
-        }
         &.rotateB1 {
-            animation: rotateB1 0.5s forwards;
+            animation: rotateB1 $time forwards;
         }
         &.rotateB2 {
-            animation: rotateB2 0.5s forwards;
+            animation: rotateB2 $time forwards;
         }
         &.rotateB3 {
-            animation: rotateB3 0.5s forwards;
+            animation: rotateB3 $time forwards;
         }
         &.rotateB4 {
-            animation: rotateB4 0.5s forwards;
-        }
-        @keyframes orbit-fade-inB {
-            0% {
-                transform: rotateZ(225deg) translateX($spread) rotateZ(-225deg);
-                opacity: 0;
-            }
-            100% {
-                transform: rotateZ(180deg) translateX($spread) rotateZ(-180deg);
-                opacity: 1;
-            }
-        }
-        @keyframes orbit-fade-outB {
-            0% {
-                transform: rotateZ(0) translateX($spread) rotateZ(0);
-                opacity: 1;
-            }
-            100% {
-                transform: rotateZ(-45deg) translateX($spread) rotateZ(45deg);
-                opacity: 0;
-            }
+            animation: rotateB4 $time forwards;
         }
         @keyframes rotateB1 {
             0% {
@@ -195,18 +158,29 @@
     }
     .current {
         width: 68%;
-        box-sizing: border-box;
-        border: 10px solid white;
     }
     .orbiters {
-        width: fit-content;
-        transform: translateY(36vh);
+        display: flex;
+        transform: translateY(35.8vh);
+        @media screen and (max-width: 1150px){
+            transform: translateY(32vh);
+        }
         @media (orientation: portrait) {
-            transform: translateY(35vw);
+            transform: translateY(30vw);
         }
         * {
             font-size: 30px;
             margin: 10px;
         }
+        svg{
+            user-select: none;
+        }
+        h1{
+            color: white;
+        }
+    }
+    .text{
+        position: absolute;
+        transform: translateY(5vh) translateX(100%);
     }
 }

@@ -56,20 +56,17 @@ export default React.memo(function Gallery({ shift, setShift }) {
                             else {
                                 setImgSrcIndex(imgSrcIndex - 1)
                             };
-                            img1.current.classList.remove('fade-outB');
-                            img6.current.classList.remove('fade-inB')
                             img2.current.classList.remove('rotateB1');
                             img3.current.classList.remove('rotateB2');
                             img4.current.classList.remove('rotateB3');
                             img5.current.classList.remove('rotateB4');
                         }, 500);
-                        img1.current.classList.add('fade-outB');
-                        img6.current.classList.add('fade-inB')
                         img2.current.classList.add('rotateB1');
                         img3.current.classList.add('rotateB2');
                         img4.current.classList.add('rotateB3');
                         img5.current.classList.add('rotateB4');
                     }} />
+                    <h1>{'Stuff'}</h1>
                     <ImArrowRight onClick={() => {
                         setTimeout(() => {
                             if (imgSrcIndex + 1 === imgSrcs.length) {
@@ -78,20 +75,21 @@ export default React.memo(function Gallery({ shift, setShift }) {
                             else {
                                 setImgSrcIndex(imgSrcIndex + 1)
                             }
-                            img6.current.classList.remove('fade-outF');
-                            img1.current.classList.remove('fade-inF');
+                            img6.current.classList.remove('disappear');
                             img2.current.classList.remove('rotateF1');
                             img3.current.classList.remove('rotateF2');
                             img4.current.classList.remove('rotateF3');
                             img5.current.classList.remove('rotateF4');
                         }, 500);
-                        img6.current.classList.add('fade-outF');
-                        img1.current.classList.add('fade-inF');
+                        img6.current.classList.add('disappear');
                         img2.current.classList.add('rotateF1');
                         img3.current.classList.add('rotateF2');
                         img4.current.classList.add('rotateF3');
                         img5.current.classList.add('rotateF4');
                     }} />
+                    <div class='text'>
+                        asdf
+                    </div>
                 </div>
             </div>
         </div >
