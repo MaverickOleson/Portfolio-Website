@@ -1,6 +1,9 @@
-.navSquare{
-    position: absolute  ;
-    background-color: black;
+.navSquare {
+    width: 20vh;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     margin: 0;
 }

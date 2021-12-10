@@ -87,9 +87,9 @@ export default React.memo(function Gallery({ shift, setShift }) {
                         img4.current.classList.add('rotateF3');
                         img5.current.classList.add('rotateF4');
                     }} />
-                    <div class='text'>
-                        asdf
-                    </div>
+                </div>
+                <div class='text'>
+                    <p>asdfasdfasdfsadf<br/>dsf</p>
                 </div>
             </div>
         </div >

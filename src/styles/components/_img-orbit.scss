@@ -3,8 +3,9 @@
     @media (orientation: landscape) {
         width: 96vh;
         transform: translateY(57.5vh);
-        @media screen and (max-width: 1150px){
+        @media screen and (max-width: 1150px) {
             width: 81vh;
+            transform: translateY(50.5vh);
         }
     }
     @media (orientation: portrait) {
@@ -158,11 +159,14 @@
     }
     .current {
         width: 68%;
+        &:hover {
+            cursor: pointer;
+        }
     }
     .orbiters {
         display: flex;
         transform: translateY(35.8vh);
-        @media screen and (max-width: 1150px){
+        @media screen and (max-width: 1150px) {
             transform: translateY(32vh);
         }
         @media (orientation: portrait) {
@@ -172,15 +176,25 @@
             font-size: 30px;
             margin: 10px;
         }
-        svg{
+        svg {
             user-select: none;
+            &:hover {
+                cursor: pointer;
+            }
         }
-        h1{
+        h1 {
             color: white;
         }
     }
-    .text{
+    .text {
+        color: white;
         position: absolute;
-        transform: translateY(5vh) translateX(100%);
+        transform: translateY(42vh);
+        @media screen and (max-width: 1150px) {
+            transform: translateY(40.5vh);
+        }
+        @media (orientation: portrait) {
+            transform: translateY(calc(28vw + 50px));
+        }
     }
 }

@@ -1,5 +1,11 @@
 .slider {
-    width: 33%;
+    width: 37%;
+    @media screen and (max-width: 1285px) {
+        width: 40%;
+    }
+    @media screen and (max-width: 1075px) {
+        width: 45%;
+    }
     height: 15px;
     position: relative;
     background-color: azure;

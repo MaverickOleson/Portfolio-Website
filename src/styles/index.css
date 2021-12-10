@@ -269,6 +269,7 @@ body #root {
 @media screen and (orientation: landscape) and (max-width: 1150px) {
   .img-orbit {
     width: 81vh;
+    transform: translateY(50.5vh);
   }
 }
 @media (orientation: portrait) {
@@ -430,6 +431,10 @@ body #root {
   width: 68%;
 }
 
+.img-orbit .current:hover {
+  cursor: pointer;
+}
+
 .img-orbit .orbiters {
   display: flex;
   transform: translateY(35.8vh);
@@ -454,28 +459,46 @@ body #root {
   user-select: none;
 }
 
+.img-orbit .orbiters svg:hover {
+  cursor: pointer;
+}
+
 .img-orbit .orbiters h1 {
   color: white;
 }
 
 .img-orbit .text {
+  color: white;
   position: absolute;
-  transform: translateY(5vh) translateX(100%);
+  transform: translateY(42vh);
 }
 
+@media screen and (max-width: 1150px) {
+  .img-orbit .text {
+    transform: translateY(40.5vh);
+  }
+}
+@media (orientation: portrait) {
+  .img-orbit .text {
+    transform: translateY(calc(28vw + 50px));
+  }
+}
 .gallery {
   background: blue;
 }
 
 .navSquare {
-  position: absolute;
-  background-color: black;
+  width: 20vh;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   margin: 0;
 }
 
 .slider {
-  width: 33%;
+  width: 37%;
   height: 15px;
   position: relative;
   background-color: azure;
@@ -487,6 +510,16 @@ body #root {
   user-select: none;
 }
 
+@media screen and (max-width: 1285px) {
+  .slider {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1075px) {
+  .slider {
+    width: 45%;
+  }
+}
 .slider .knob {
   width: 35px;
   height: 35px;
