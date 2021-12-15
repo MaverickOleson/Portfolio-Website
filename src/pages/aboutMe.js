@@ -2,14 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slider from '../components/slider';
 
-export default React.memo(function Blog({ setShift }) {
+export default React.memo(function AboutMe({ setShift }) {
     const navigation = useNavigate();
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
     const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
     useEffect(() => {
         if (window.location.pathname === '/') {
-            setNavText('Blog');
+            setNavText('About\nMe');
         } else {
             setNavText('Home');
         }

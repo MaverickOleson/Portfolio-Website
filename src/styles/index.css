@@ -54,49 +54,49 @@ body #root {
 
 .app {
   width: 100%;
-  min-height: calc(var(--vh, 1vh) * 100 - 1px);
+  min-height: calc(var(--vh, 1vh) * 100);
   background-color: black;
   text-align: center;
-}
-
-.app .blog {
-  bottom: calc(var(--vh, 1vh) * 80);
-  left: calc(100vw - 20vh);
-}
-
-.app .aboutMe {
-  bottom: calc(var(--vh, 1vh) * 80);
-  right: calc(100vw - 20vh);
-}
-
-.app .workExperience {
-  top: calc(var(--vh, 1vh) * 80);
-  right: calc(100vw - 20vh);
-}
-
-.app .gallery {
-  top: calc(var(--vh, 1vh) * 80);
-  left: calc(100vw - 20vh);
 }
 
 .app img {
   background-color: white;
 }
 
+.app .blog {
+  bottom: calc(var(--vh, 1vh) * 84);
+  left: calc(100vw - 16vh);
+}
+
+.app .aboutMe {
+  bottom: calc(var(--vh, 1vh) * 84);
+  right: calc(100vw - 16vh);
+}
+
+.app .workExperience {
+  top: calc(var(--vh, 1vh) * 84);
+  right: calc(100vw - 16vh);
+}
+
+.app .gallery {
+  top: calc(var(--vh, 1vh) * 84);
+  left: calc(100vw - 16vh);
+}
+
 .app.blog {
-  transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
+  transform: translateY(calc(var(--vh, 1vh) * 84)) translateX(calc(-100vw + 16vh));
 }
 
 .app.aboutMe {
-  transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
+  transform: translateY(calc(var(--vh, 1vh) * 84)) translateX(calc(100vw - 16vh));
 }
 
 .app.workExperience {
-  transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
+  transform: translateY(calc(var(--vh, 1vh) * -84)) translateX(calc(100vw - 16vh));
 }
 
 .app.gallery {
-  transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
+  transform: translateY(calc(var(--vh, 1vh) * -84)) translateX(calc(-100vw + 16vh));
 }
 
 .app.shift1F {
@@ -136,12 +136,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * 84)) translateX(calc(-100vw + 16vh));
   }
 }
 @keyframes shift1B {
   0% {
-    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(-100vw + 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * 84)) translateX(calc(-100vw + 16vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -152,12 +152,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * 84)) translateX(calc(100vw - 16vh));
   }
 }
 @keyframes shift2B {
   0% {
-    transform: translateY(calc(var(--vh, 1vh) * 80)) translateX(calc(100vw - 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * 84)) translateX(calc(100vw - 16vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -168,12 +168,12 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * -84)) translateX(calc(100vw - 16vh));
   }
 }
 @keyframes shift3B {
   0% {
-    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(100vw - 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * -84)) translateX(calc(100vw - 16vh));
   }
   100% {
     transform: translateX(0) translateY(0);
@@ -184,15 +184,117 @@ body #root {
     transform: translateX(0) translateY(0);
   }
   100% {
-    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * -84)) translateX(calc(-100vw + 16vh));
   }
 }
 @keyframes shift4B {
   0% {
-    transform: translateY(calc(var(--vh, 1vh) * -80)) translateX(calc(-100vw + 20vh));
+    transform: translateY(calc(var(--vh, 1vh) * -84)) translateX(calc(-100vw + 16vh));
   }
   100% {
     transform: translateX(0) translateY(0);
+  }
+}
+@media (orientation: portrait) {
+  .app .blog {
+    bottom: calc(var(--vh, 1vh) * 88);
+    left: calc(100vw - 12vh);
+  }
+
+  .app .aboutMe {
+    bottom: calc(var(--vh, 1vh) * 88);
+    right: calc(100vw - 12vh);
+  }
+
+  .app .workExperience {
+    top: calc(var(--vh, 1vh) * 88);
+    right: calc(100vw - 12vh);
+  }
+
+  .app .gallery {
+    top: calc(var(--vh, 1vh) * 88);
+    left: calc(100vw - 12vh);
+  }
+
+  .app.blog {
+    transform: translateY(calc(var(--vh, 1vh) * 88)) translateX(calc(-100vw + 12vh));
+  }
+
+  .app.aboutMe {
+    transform: translateY(calc(var(--vh, 1vh) * 88)) translateX(calc(100vw - 12vh));
+  }
+
+  .app.workExperience {
+    transform: translateY(calc(var(--vh, 1vh) * -88)) translateX(calc(100vw - 12vh));
+  }
+
+  .app.gallery {
+    transform: translateY(calc(var(--vh, 1vh) * -88)) translateX(calc(-100vw + 12vh));
+  }
+
+  @keyframes shift1F {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    100% {
+      transform: translateY(calc(var(--vh, 1vh) * 88)) translateX(calc(-100vw + 12vh));
+    }
+  }
+  @keyframes shift1B {
+    0% {
+      transform: translateY(calc(var(--vh, 1vh) * 88)) translateX(calc(-100vw + 12vh));
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+  @keyframes shift2F {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    100% {
+      transform: translateY(calc(var(--vh, 1vh) * 88)) translateX(calc(100vw - 12vh));
+    }
+  }
+  @keyframes shift2B {
+    0% {
+      transform: translateY(calc(var(--vh, 1vh) * 88)) translateX(calc(100vw - 12vh));
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+  @keyframes shift3F {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    100% {
+      transform: translateY(calc(var(--vh, 1vh) * -88)) translateX(calc(100vw - 12vh));
+    }
+  }
+  @keyframes shift3B {
+    0% {
+      transform: translateY(calc(var(--vh, 1vh) * -88)) translateX(calc(100vw - 12vh));
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+  @keyframes shift4F {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    100% {
+      transform: translateY(calc(var(--vh, 1vh) * -88)) translateX(calc(-100vw + 12vh));
+    }
+  }
+  @keyframes shift4B {
+    0% {
+      transform: translateY(calc(var(--vh, 1vh) * -88)) translateX(calc(-100vw + 12vh));
+    }
+    100% {
+      transform: translateX(0) translateY(0);
+    }
   }
 }
 .aboutMe {
@@ -294,10 +396,10 @@ body #root {
   width: 23%;
   position: absolute;
   transform-origin: center;
-  border-radius: 50%;
+  border-radius: 100%;
   object-fit: cover;
   box-sizing: border-box;
-  border: 5px solid white;
+  border: 0.6vw solid white;
 }
 
 @media (orientation: portrait) {
@@ -488,13 +590,26 @@ body #root {
 }
 
 .navSquare {
-  width: 20vh;
-  height: 20vh;
+  width: 16vh;
+  height: 16vh;
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
   color: white;
   margin: 0;
+  box-sizing: border-box;
+  border: 0.6vw solid white;
+}
+
+@media (orientation: portrait) {
+  .navSquare {
+    width: 12vh;
+    height: 12vh;
+  }
+}
+.navSquare:hover {
+  cursor: pointer;
 }
 
 .slider {

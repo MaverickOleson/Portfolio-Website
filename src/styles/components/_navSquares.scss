@@ -1,9 +1,19 @@
 .navSquare {
-    width: 20vh;
-    height: 20vh;
+    width: 16vh;
+    height: 16vh;
+    @media (orientation: portrait) {
+        width: 12vh;
+        height: 12vh;
+    }
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     color: white;
     margin: 0;
+    box-sizing: border-box;
+    border: 0.6vw solid white;
+    &:hover{
+        cursor: pointer;
+    }
 }

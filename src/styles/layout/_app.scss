@@ -3,44 +3,43 @@
 }
 .app {
     width: 100%;
-    min-height: calc(var(--vh, 1vh) * 100 - 1px);
+    min-height: calc(var(--vh, 1vh) * 100);
     background-color: black;
     text-align: center;
-    $page-spread: 20;
-    .blog {
-        bottom: calc(var(--vh, 1vh) * 80);
-        left: calc(100vw - 20vh);
-    }
-    .aboutMe {
-        bottom: calc(var(--vh, 1vh) * 80);
-        right: calc(100vw - 20vh);
-    }
-    .workExperience {
-        top: calc(var(--vh, 1vh) * 80);
-        right: calc(100vw - 20vh);
-    }
-    .gallery {
-        top: calc(var(--vh, 1vh) * 80);
-        left: calc(100vw - 20vh);
-    }
     img {
         background-color: white;
     }
+    .blog {
+        bottom: calc(var(--vh, 1vh) * 84);
+        left: calc(100vw - 16vh);
+    }
+    .aboutMe {
+        bottom: calc(var(--vh, 1vh) * 84);
+        right: calc(100vw - 16vh);
+    }
+    .workExperience {
+        top: calc(var(--vh, 1vh) * 84);
+        right: calc(100vw - 16vh);
+    }
+    .gallery {
+        top: calc(var(--vh, 1vh) * 84);
+        left: calc(100vw - 16vh);
+    }
     &.blog {
-        transform: translateY(calc(var(--vh, 1vh) * 80))
-            translateX(calc(-100vw + 20vh));
+        transform: translateY(calc(var(--vh, 1vh) * 84))
+            translateX(calc(-100vw + 16vh));
     }
     &.aboutMe {
-        transform: translateY(calc(var(--vh, 1vh) * 80))
-            translateX(calc(100vw - 20vh));
+        transform: translateY(calc(var(--vh, 1vh) * 84))
+            translateX(calc(100vw - 16vh));
     }
     &.workExperience {
-        transform: translateY(calc(var(--vh, 1vh) * -80))
-            translateX(calc(100vw - 20vh));
+        transform: translateY(calc(var(--vh, 1vh) * -84))
+            translateX(calc(100vw - 16vh));
     }
     &.gallery {
-        transform: translateY(calc(var(--vh, 1vh) * -80))
-            translateX(calc(-100vw + 20vh));
+        transform: translateY(calc(var(--vh, 1vh) * -84))
+            translateX(calc(-100vw + 16vh));
     }
     &.shift1F {
         animation: shift1F 0.75s ease forwards;
@@ -71,14 +70,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * 80))
-                translateX(calc(-100vw + 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * 84))
+                translateX(calc(-100vw + 16vh));
         }
     }
     @keyframes shift1B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * 80))
-                translateX(calc(-100vw + 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * 84))
+                translateX(calc(-100vw + 16vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -89,14 +88,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * 80))
-                translateX(calc(100vw - 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * 84))
+                translateX(calc(100vw - 16vh));
         }
     }
     @keyframes shift2B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * 80))
-                translateX(calc(100vw - 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * 84))
+                translateX(calc(100vw - 16vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -107,14 +106,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * -80))
-                translateX(calc(100vw - 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * -84))
+                translateX(calc(100vw - 16vh));
         }
     }
     @keyframes shift3B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * -80))
-                translateX(calc(100vw - 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * -84))
+                translateX(calc(100vw - 16vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -125,17 +124,123 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * -80))
-                translateX(calc(-100vw + 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * -84))
+                translateX(calc(-100vw + 16vh));
         }
     }
     @keyframes shift4B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * -80))
-                translateX(calc(-100vw + 20vh));
+            transform: translateY(calc(var(--vh, 1vh) * -84))
+                translateX(calc(-100vw + 16vh));
         }
         100% {
             transform: translateX(0) translateY(0);
+        }
+    }
+    @media (orientation: portrait){
+        .blog {
+            bottom: calc(var(--vh, 1vh) * 88);
+            left: calc(100vw - 12vh);
+        }
+        .aboutMe {
+            bottom: calc(var(--vh, 1vh) * 88);
+            right: calc(100vw - 12vh);
+        }
+        .workExperience {
+            top: calc(var(--vh, 1vh) * 88);
+            right: calc(100vw - 12vh);
+        }
+        .gallery {
+            top: calc(var(--vh, 1vh) * 88);
+            left: calc(100vw - 12vh);
+        }
+        &.blog {
+            transform: translateY(calc(var(--vh, 1vh) * 88))
+                translateX(calc(-100vw + 12vh));
+        }
+        &.aboutMe {
+            transform: translateY(calc(var(--vh, 1vh) * 88))
+                translateX(calc(100vw - 12vh));
+        }
+        &.workExperience {
+            transform: translateY(calc(var(--vh, 1vh) * -88))
+                translateX(calc(100vw - 12vh));
+        }
+        &.gallery {
+            transform: translateY(calc(var(--vh, 1vh) * -88))
+                translateX(calc(-100vw + 12vh));
+        }
+        @keyframes shift1F {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateY(calc(var(--vh, 1vh) * 88))
+                    translateX(calc(-100vw + 12vh));
+            }
+        }
+        @keyframes shift1B {
+            0% {
+                transform: translateY(calc(var(--vh, 1vh) * 88))
+                    translateX(calc(-100vw + 12vh));
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        @keyframes shift2F {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateY(calc(var(--vh, 1vh) * 88))
+                    translateX(calc(100vw - 12vh));
+            }
+        }
+        @keyframes shift2B {
+            0% {
+                transform: translateY(calc(var(--vh, 1vh) * 88))
+                    translateX(calc(100vw - 12vh));
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        @keyframes shift3F {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateY(calc(var(--vh, 1vh) * -88))
+                    translateX(calc(100vw - 12vh));
+            }
+        }
+        @keyframes shift3B {
+            0% {
+                transform: translateY(calc(var(--vh, 1vh) * -88))
+                    translateX(calc(100vw - 12vh));
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        @keyframes shift4F {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateY(calc(var(--vh, 1vh) * -88))
+                    translateX(calc(-100vw + 12vh));
+            }
+        }
+        @keyframes shift4B {
+            0% {
+                transform: translateY(calc(var(--vh, 1vh) * -88))
+                    translateX(calc(-100vw + 12vh));
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
         }
     }
 }
