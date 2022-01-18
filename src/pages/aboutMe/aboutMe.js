@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Slider from '../components/slider';
+import Slider from '../../components/slider/slider';
 
 export default React.memo(function AboutMe({ setShift }) {
     const navigation = useNavigate();
+    const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
     const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
@@ -12,6 +13,9 @@ export default React.memo(function AboutMe({ setShift }) {
             setNavText('About\nMe');
         } else {
             setNavText('Home');
+        }
+        if (window.location.pathname === '/aboutMe') {
+            setRender(true);
         }
     });
     function switchPost() {
@@ -22,24 +26,33 @@ export default React.memo(function AboutMe({ setShift }) {
         <div className='aboutMe web-page'>
             <h1 className='navSquare' onClick={() => {
                 if (window.location.pathname === '/') {
+                    navigation('/aboutMe');
                     setShift(' shift2F');
-                    setTimeout(() => {
-                        navigation('/aboutMe');
-                    }, 500);
                 }
                 else {
+                    navigation('/');
                     setShift(' shift2B');
-                    setTimeout(() => {
-                        navigation('/');
-                    }, 500);
+                    document.addEventListener('animationend', startBlog);
+                    function startBlog(e) {
+                        if (e.animationName === 'shift2B') {
+                            setRender(false);
+                            document.removeEventListener('animationend', startBlog);
+                        }
+                    }
                 }
             }}>{navText}</h1>
-            <div className='info'>
-                <p>{switchPost()[0]}</p>
-                <img />
-                <p>{switchPost()[1]}</p>
-            </div>
-            <Slider pos={pos} setPos={setPos} />
+            {
+                (render) ?
+                    <>
+                        <div className='info'>
+                            <p>{switchPost()[0]}</p>
+                            <img />
+                            <p>{switchPost()[1]}</p>
+                        </div>
+                        <Slider pos={pos} setPos={setPos} />
+                    </>
+                    : ''
+            }
         </div >
     )
 });

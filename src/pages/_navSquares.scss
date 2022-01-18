@@ -5,14 +5,14 @@
         width: 12vh;
         height: 12vh;
     }
+    z-index: 2;
     display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
-    color: white;
+    border: 10px solid ghostwhite;
     margin: 0;
     box-sizing: border-box;
-    border: 0.6vw solid white;
     &:hover{
         cursor: pointer;
     }

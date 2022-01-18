@@ -38,11 +38,9 @@
         border-radius: 100%;
         object-fit: cover;
         $spread: -212%;
-        box-sizing: border-box;
-        border: 0.6vw solid white;
-        @media (orientation: portrait) {
-            border: 2px solid white;
-        }
+        // box-sizing: border-box;
+        // border: 0.6vw solid ghostwhite;
+        border: 2px solid ghostwhite;
         // &:after {
         //     content: "";
         //     display: block;
@@ -182,12 +180,8 @@
                 cursor: pointer;
             }
         }
-        h1 {
-            color: white;
-        }
     }
     .text {
-        color: white;
         position: absolute;
         transform: translateY(42vh);
         @media screen and (max-width: 1150px) {

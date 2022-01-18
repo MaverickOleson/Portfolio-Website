@@ -1,0 +1,82 @@
+.blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f0f4;
+    background: linear-gradient(to bottom, #f0f8, #0dd8);
+    color: #f8f8ffea;
+    #blogPostCont{
+        width: 100%;
+        height: calc(50vh - 14px);
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll;
+        *{
+            font-size: 58px;
+            width: fit-content;
+            margin: 0;
+        }
+    }
+    .navSquare {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .slider{
+        margin-top: 10vh;
+    }
+    .slideRight1{
+        animation: slideRight1 0.5s ease forwards;
+    }
+    .slideRight2{
+        animation: slideRight2 0.5s ease forwards;
+    }
+    .slideLeft1{
+        animation: slideLeft1 0.5s ease forwards;
+    }
+    .slideLeft2{
+        animation: slideLeft2 0.5s ease forwards;
+    }
+    @keyframes slideRight1 {
+        0%{
+            opacity: 0.2;
+            transform: translateY(0);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(5vh);
+        }
+    }
+    @keyframes slideRight2 {
+        0%{
+            opacity: 0.2;
+            transform: translateY(0);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(5vh);
+        }
+    }
+    @keyframes slideLeft1 {
+        0%{
+            opacity: 0.2;
+            transform: translateY(10vh);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(5vh);
+        }
+    }
+    @keyframes slideLeft2 {
+        0%{
+            opacity: 0.2;
+            transform: translateY(10vh);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(5vh);
+        }
+    }
+}

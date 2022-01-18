@@ -1,0 +1,11 @@
+.home{
+    display: flex;
+    justify-content: center;
+    main{
+        width: calc(80vw - 32vh);
+        @media (orientation: portrait) {
+            width: calc(100vw - 24vh);
+        }
+        font-size: 3.5vw;
+    }
+}

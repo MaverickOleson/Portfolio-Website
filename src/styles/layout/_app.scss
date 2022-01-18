@@ -4,10 +4,14 @@
 .app {
     width: 100%;
     min-height: calc(var(--vh, 1vh) * 100);
-    background-color: black;
+    background-color: #000;
+    color: ghostwhite;
+    background-image: url('./tile.svg');
+    background-position: center;
+    background-size: calc(10vh);
     text-align: center;
     img {
-        background-color: white;
+        background-color: ghostwhite;
     }
     .blog {
         bottom: calc(var(--vh, 1vh) * 84);

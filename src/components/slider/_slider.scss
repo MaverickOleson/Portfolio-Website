@@ -6,23 +6,27 @@
     @media screen and (max-width: 1075px) {
         width: 45%;
     }
-    height: 15px;
+    height: 14px;
     position: relative;
-    background-color: azure;
+    background-color: ghostwhite;
     box-sizing: border-box;
     border-radius: 15px;
-    border: 2px solid black;
     box-shadow: black;
     touch-action: none;
     user-select: none;
+    margin: {
+        top: 20px;
+        bottom: 20px;
+    }
     .knob {
-        width: 35px;
-        height: 35px;
+        width: 50px;
+        height: 50px;
         border-radius: 100%;
         position: absolute;
         top: 50%;
         left: 0;
         transform: translateY(-50%) translateX(-50%);
-        background-color: dimgray;
+        background: gray;
+        background: linear-gradient(to left , #0bf8 30%, #f0f8);
     }
 }

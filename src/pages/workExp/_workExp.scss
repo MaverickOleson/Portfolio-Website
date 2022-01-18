@@ -1,13 +1,13 @@
-.blog {
+.workExperience {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    color: azure;
+    background: #f208;
+    background: linear-gradient(to top , #f808, #f008);
     .navSquare {
         position: absolute;
-        bottom: 0;
-        left: 0;
+        top: 0;
+        right: 0;
     }
 }

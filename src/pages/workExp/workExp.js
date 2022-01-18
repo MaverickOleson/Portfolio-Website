@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default React.memo(function Gallery({ setShift }) {
     const navigation = useNavigate();
+    const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
     const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
@@ -11,6 +12,9 @@ export default React.memo(function Gallery({ setShift }) {
             setNavText('Work\nExp.');
         } else {
             setNavText('Home');
+        }
+        if (window.location.pathname === '/workExperience') {
+            setRender(true);
         }
     });
     function switchPost() {
@@ -21,19 +25,26 @@ export default React.memo(function Gallery({ setShift }) {
         <div className='workExperience web-page'>
             <h1 className='navSquare' onClick={() => {
                 if (window.location.pathname === '/') {
+                    navigation('/workExperience');
                     setShift(' shift3F');
-                    setTimeout(() => {
-                        navigation('/workExperience');
-                    }, 500);
                 }
                 else {
+                    navigation('/');
                     setShift(' shift3B');
-                    setTimeout(() => {
-                        navigation('/');
-                    }, 500);
+                    document.addEventListener('animationend', startBlog);
+                    function startBlog(e) {
+                        if (e.animationName === 'shift3B') {
+                            setRender(false);
+                            document.removeEventListener('animationend', startBlog);
+                        }
+                    }
                 }
             }}>{navText}</h1>
-            aklsjdfkajsdflkjasdklfjaslkdfj
+            {
+                (render) ?
+                    'aklsjdfkajsdflkjasdklfjaslkdfj'
+                    : ''
+            }
         </div >
     )
 });
