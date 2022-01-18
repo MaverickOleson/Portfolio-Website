@@ -3,9 +3,13 @@
     justify-content: center;
     main{
         width: calc(80vw - 32vh);
+        height: fit-content;
         @media (orientation: portrait) {
             width: calc(100vw - 24vh);
         }
         font-size: 3.5vw;
+        background: #000a;
+        border: 10px solid ghostwhite;
+        margin: 10vh;
     }
 }

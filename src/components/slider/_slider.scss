@@ -18,6 +18,12 @@
         top: 20px;
         bottom: 20px;
     }
+    &:hover{
+        cursor: pointer;
+    }
+    &:active{
+        cursor: pointer;
+    }
     .knob {
         width: 50px;
         height: 50px;
@@ -27,6 +33,7 @@
         left: 0;
         transform: translateY(-50%) translateX(-50%);
         background: gray;
-        background: linear-gradient(to left , #0bf8 30%, #f0f8);
+        background: #000;
+        box-sizing: border-box;
     }
 }
