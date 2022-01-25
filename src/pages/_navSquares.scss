@@ -16,4 +16,23 @@
     &:hover{
         cursor: pointer;
     }
+    &#blogNav{
+        right: 0;
+        background: #0ff8;
+    }
+    &#aboutMeNav{
+        top: 0;
+        left: 0;
+        background: #f0f8;
+    }
+    &#workExpNav{
+        background: #f008;
+        bottom: 0;
+        left: 0;
+    }
+    &#galleryNav{
+        right: 0;
+        bottom: 0;
+        background: #00f8;
+    }
 }

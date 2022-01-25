@@ -41,9 +41,10 @@ export default React.memo(function Blog({ setShift }) {
         }
         return post;
     }
+    const a = useRef();
     return (
-        <div className='blog web-page'>
-            <h1 className='navSquare' onClick={() => {
+        <>
+            <h1 className='navSquare' ref={a} id="blogNav" onClick={() => {
                 if (window.location.pathname === '/') {
                     navigation('/blog');
                     setShift(' shift1F');
@@ -76,14 +77,14 @@ export default React.memo(function Blog({ setShift }) {
             }}>{navText}</h1>
             {
                 (render) ?
-                    <>
+                    <div className='blog web-page'>
                         <Slider pos={pos} setPos={setPos} />
                         <div id="blogPostCont">
                             <h1 ref={postText} className='slideRight1' >{switchPost()}</h1>
                         </div>
-                    </>
+                    </div >
                     : ''
             }
-        </div >
+        </>
     )
 });

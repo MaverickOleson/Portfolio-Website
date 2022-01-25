@@ -23,8 +23,8 @@ export default React.memo(function AboutMe({ setShift }) {
         return posts[Math.floor(point / 100 * posts.length)] || posts[posts.length - 1];
     }
     return (
-        <div className='aboutMe web-page'>
-            <h1 className='navSquare' onClick={() => {
+        <>
+            <h1 className='navSquare' id="aboutMeNav" onClick={() => {
                 if (window.location.pathname === '/') {
                     navigation('/aboutMe');
                     setShift(' shift2F');
@@ -43,16 +43,17 @@ export default React.memo(function AboutMe({ setShift }) {
             }}>{navText}</h1>
             {
                 (render) ?
-                    <>
+                    <div className='aboutMe web-page'>
+
                         <div className='info'>
                             <p>{switchPost()[0]}</p>
                             <img />
                             <p>{switchPost()[1]}</p>
                         </div>
                         <Slider pos={pos} setPos={setPos} />
-                    </>
+                    </div >
                     : ''
             }
-        </div >
+        </>
     )
 });
