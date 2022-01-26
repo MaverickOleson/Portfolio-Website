@@ -10,29 +10,27 @@
     position: absolute;
     justify-content: center;
     align-items: center;
-    border: 0.5vw solid ghostwhite;
     margin: 0;
-    box-sizing: border-box;
     &:hover{
         cursor: pointer;
     }
     &#blogNav{
         right: 0;
-        background: #0ff8;
+        background: #0ff;
     }
     &#aboutMeNav{
         top: 0;
         left: 0;
-        background: #f0f8;
+        background: #f0f;
     }
     &#workExpNav{
-        background: #f008;
+        background: #f00;
         bottom: 0;
         left: 0;
     }
     &#galleryNav{
         right: 0;
         bottom: 0;
-        background: #00f8;
+        background: #00f;
     }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import person from '../../person.glb';
 
 export default React.memo(function Gallery({ setShift }) {
     const navigation = useNavigate();
@@ -9,51 +10,83 @@ export default React.memo(function Gallery({ setShift }) {
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
     const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+    const [animReady, setAnimReady] = useState(true);
+    const workExpCanvas = useRef();
 
-    const scene = new THREE.Scene();
+    function expAnim() {
+        const scene = new THREE.Scene();
 
-    //camera
-    const cameraWidth = 10;
-    const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
-    const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, 1, 1000);
-    camera.position.set(4, 4, 4);
-    camera.lookAt(0, 0, 0);
+        //camera
+        const cameraWidth = 10;
+        const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
+        const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -1, 100);
+        camera.position.set(4, 4, 4);
+        camera.lookAt(0, 0, 0);
 
-    //stair
-    var length = 9;
-    var scale = Math.round(length / 8)
-    for (var i = 1; i <= length; i++) {
-        var cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, i), new THREE.MeshLambertMaterial({ color: 0xff4000 }));
-        cube.position.y = length - i;
-        cube.position.z = i / 2;
-        cube.castShadow = true;
-        scene.add(cube);
+        //stair
+        var length = 9;
+        var scale = Math.round(length / 8)
+        for (var i = 1; i <= length; i++) {
+            var cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, i), new THREE.MeshLambertMaterial({ color: 0xf00000 }));
+            cube.position.y = length - i;
+            cube.position.z = i / 2;
+            cube.castShadow = true;
+            scene.add(cube);
+        }
+
+        //light
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(2, 3, 1)
+        scene.add(directionalLight);
+
+        //renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: workExpCanvas.current });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+
+        const loader = new GLTFLoader();
+        loader.load(person, (glb) => {
+            const person = glb.scene;
+            person.scale.set(0.5, 0.5, 0.5);
+            person.position.y = 1.295;
+            person.position.z = 9.5;
+            person.castShadow = true;
+            scene.add(person);
+
+            var currentFunc;
+            var past = person.position.z;
+
+            function personRight() {
+                // console.log(person.position.z, past)
+                if (Math.floor(person.position.z) > past - 1) person.position.z = (person.position.z - 0.1);
+                else {
+                    person.position.z = past - 1;
+                    console.log(person)
+                    currentFunc = undefined;
+                }
+            }
+
+            document.addEventListener('keydown', (e) => {
+                //!keyDown.current && 
+                if (e.key === 'ArrowRight') { currentFunc = personRight;/*keyDown.current = true*/ };
+            }, false);
+
+            //animate
+            function animate() {
+                if (window.location.pathname === '/') return;
+                requestAnimationFrame(animate);
+                if (currentFunc) currentFunc();
+                renderer.render(scene, camera);
+            };
+            animate()
+        }, undefined, (error) => {
+            console.error(error);
+        });
     }
-
-    // const loader = new GLTFLoader();
-    // loader.load('./person.glb', (gltf) => {
-    //     scene.add(gltf.scene)
-    // }, undefined, (err) => {
-    //     console.error(err);
-    // })
-
-    //plane
-    const plane = new THREE.Mesh(new THREE.PlaneGeometry(4, 30), new THREE.MeshLambertMaterial({ color: 0xffffff }));
-    plane.rotation.set(Math.PI / 2, Math.PI, 0);
-    plane.position.set(0, -0.5, 0)
-    scene.add(plane);
-
-    //light
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(2, 3, 1)
-    scene.add(directionalLight);
-
-    //renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
 
     useEffect(() => {
         if (window.location.pathname === '/') {
+            setAnimReady(false);
             setNavText('Work\nExp.');
         } else {
             setNavText('Home');
@@ -61,24 +94,21 @@ export default React.memo(function Gallery({ setShift }) {
         if (window.location.pathname === '/workExperience') {
             setRender(true);
         }
+        if (animReady && workExpCanvas.current) expAnim();
+        // else if (workExpCanvas.current) {
+        //     document.addEventListener('animationend', startWorkExp);
+        //     function startWorkExp(e) {
+        //         if (e.animationName === 'shift3F') {
+        //             expAnim();
+        //             document.removeEventListener('animationend', startWorkExp);
+        //         }
+        //     }
+        // }
     });
-    useEffect(() => {
 
-
-        //animate
-        function animate() {
-            requestAnimationFrame(animate);
-
-
-            renderer.render(scene, camera);
-        };
-        animate()
-    }, []);
-
-    function switchPost() {
-        var point = Math.round(pos);
-        return posts[Math.floor(point / 100 * posts.length)] || posts[posts.length - 1];
-    }
+    // function forward(){
+    //     while()
+    // }
 
     return (
         <>
@@ -86,22 +116,30 @@ export default React.memo(function Gallery({ setShift }) {
                 if (window.location.pathname === '/') {
                     navigation('/workExperience');
                     setShift(' shift3F');
+                    document.addEventListener('animationend', startBlog);
+                    function startBlog(e) {
+                        if (e.animationName === 'shift3F') {
+                            setAnimReady(true);
+                            document.removeEventListener('animationend', startBlog);
+                        }
+                    }
                 }
                 else {
                     navigation('/');
                     setShift(' shift3B');
-                    document.addEventListener('animationend', startBlog);
-                    function startBlog(e) {
+                    document.addEventListener('animationend', startWorkExp);
+                    function startWorkExp(e) {
                         if (e.animationName === 'shift3B') {
                             setRender(false);
-                            document.removeEventListener('animationend', startBlog);
+                            document.removeEventListener('animationend', startWorkExp);
                         }
                     }
                 }
             }}>{navText}</h1>
             {
                 (render) ?
-                    <div id="workExperience" className='workExperience web-page'>
+                    <div className='workExperience web-page'>
+                        <canvas ref={workExpCanvas}></canvas>
                     </div >
                     : ''
             }

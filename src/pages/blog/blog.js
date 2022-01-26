@@ -41,10 +41,9 @@ export default React.memo(function Blog({ setShift }) {
         }
         return post;
     }
-    const a = useRef();
     return (
         <>
-            <h1 className='navSquare' ref={a} id="blogNav" onClick={() => {
+            <h1 className='navSquare' id="blogNav" onClick={() => {
                 if (window.location.pathname === '/') {
                     navigation('/blog');
                     setShift(' shift1F');
