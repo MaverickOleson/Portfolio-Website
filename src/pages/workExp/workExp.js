@@ -49,19 +49,30 @@ export default React.memo(function Gallery({ setShift }) {
             const person = glb.scene;
             person.scale.set(0.5, 0.5, 0.5);
             person.position.y = 1.295;
-            person.position.z = 9.5;
+            person.position.z = length + 0.5;
             person.castShadow = true;
             scene.add(person);
 
             var currentFunc;
-            var past = person.position.z;
+            var pastZ = person.position.z;
+            var interval = 0;
+
+            var pastY = person.position.y;
+
+            var mid;
 
             function personRight() {
                 // console.log(person.position.z, past)
-                if (Math.floor(person.position.z) > past - 1) person.position.z = (person.position.z - 0.1);
+                if (person.position.z != pastZ - 1) {
+                    interval += 0.02;
+                    person.position.z = pastZ - interval;
+                    person.position.y = (Math.sin((pastZ - person.position.z) * 2) / 2 + pastY + 0.50);
+                }
                 else {
-                    person.position.z = past - 1;
-                    console.log(person)
+                    console.log(pastZ, pastY)
+                    pastZ--;
+                    interval = 0;
+                    pastY++;
                     currentFunc = undefined;
                 }
             }
