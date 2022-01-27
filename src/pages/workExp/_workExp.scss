@@ -5,4 +5,13 @@
     align-items: center;
     background: #f008;
     // background: linear-gradient(to top , #f808, #f008);
+    #test{
+        width: 30%;
+        overflow: hidden;
+        canvas{
+            position: relative;
+            right: 70%
+        }
+        // margin-bottom: -60%;
+    }
 }

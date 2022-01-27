@@ -8,29 +8,31 @@ export default React.memo(function Gallery({ setShift }) {
     const navigation = useNavigate();
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
-    const [pos, setPos] = useState(0);
-    const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+    const careerRings = ['Words', 'Are', 'Pretty', 'Cool'];
     const [animReady, setAnimReady] = useState(true);
     const workExpCanvas = useRef();
+    const resize = useRef(false);
     const keyPress = useRef(false);
+
+    //make more variables
 
     async function expAnim() {
         const scene = new THREE.Scene();
 
+        const stairLength = 10;
+
         //camera
-        const cameraWidth = 15;
+        const cameraWidth = (stairLength > 9) ? stairLength * 1.6 : (stairLength > 4) ? stairLength * 2 : stairLength * 5;
         const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
         const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -20, 100);
-        camera.position.set(7, 2, 5);
+        camera.position.set(4, 4, 4);
         camera.lookAt(0, 0, 0);
 
         //stair
-        var length = 10;
-        var scale = Math.round(length / 8)
-        for (var i = 1; i <= length; i++) {
+        for (var i = 1; i <= stairLength; i++) {
             var cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, i), new THREE.MeshLambertMaterial({ color: 0xf00000 }));
-            cube.position.y = length - i;
-            cube.position.z = i / 2 - Math.round(length / 2) + 1;
+            cube.position.y = stairLength - i - stairLength / 2;
+            cube.position.z = i / 2 - Math.round(stairLength / 2) + 1;
             cube.castShadow = true;
             scene.add(cube);
         }
@@ -43,14 +45,28 @@ export default React.memo(function Gallery({ setShift }) {
         //renderer
         const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: workExpCanvas.current });
         renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+        if (window.innerWidth > window.innerHeight) {
+            renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+            // workExpCanvas.current.style.clipPath = `inset(calc(20% - ${window.innerWidth / 19}px) 30% 0 30%)`;
+        } else {
+            renderer.setSize(window.innerWidth * 2, window.innerHeight * 2);
+            // workExpCanvas.current.style.clipPath = 'inset(0% 30% 0% 30%)';
+            // workExpCanvas.current.style.transform = 'translateY(-30%)';
+            // workExpCanvas.current.style.clipPath = 'inset(30% 30% 30% 30%)';
+            // if (window.innerWidth > 615) workExpCanvas.current.style.clipPath = 'inset(28% 30% 27% 30%)';
+            // else if (window.innerWidth > 518) workExpCanvas.current.style.clipPath = 'inset(30% 30% 30% 30%)';
+            // else {
+            //     workExpCanvas.current.style.clipPath = 'inset(33% 30% 33% 30%)';
+            // }
+        }
 
         const loader = new GLTFLoader();
         loader.load(person, (glb) => {
             const person = glb.scene;
             person.scale.set(0.5, 0.5, 0.5);
-            person.position.y = 1.295;
-            person.position.z = length - Math.round(length / 2) + 1.5;
+            person.position.y = 1.295 - stairLength / 2;
+            const maxLeft = stairLength - Math.round(stairLength / 2) + 1.5;
+            person.position.z = maxLeft;
             person.castShadow = true;
             scene.add(person);
 
@@ -61,6 +77,11 @@ export default React.memo(function Gallery({ setShift }) {
             var pastY = person.position.y;
 
             function personRight() {
+                if (pastZ === maxLeft - stairLength) {
+                    currentFunc = undefined;
+                    keyPress.current = false;
+                    return;
+                }
                 if (person.position.z != pastZ - 1) {
                     interval++;
                     person.position.z = pastZ - interval / 10;
@@ -76,7 +97,12 @@ export default React.memo(function Gallery({ setShift }) {
                 }
             }
             function personLeft() {
-                if (person.position.z != pastZ + 1) {
+                if (pastZ === maxLeft) {
+                    currentFunc = undefined;
+                    keyPress.current = false;
+                    return;
+                }
+                if (person.position.z !== pastZ + 1) {
                     interval++;
                     person.position.z = pastZ + interval / 10;
                     if (interval / 10 < 0.5) person.position.y = Math.sqrt(1 - Math.pow((1 - interval / 10) * 4 - 3, 2)) / 4 + pastY;
@@ -92,22 +118,26 @@ export default React.memo(function Gallery({ setShift }) {
             }
 
             document.addEventListener('keydown', (e) => {
-                console.log(keyPress.current)
                 if (!keyPress.current && e.key === 'ArrowRight') {
                     currentFunc = personRight;
-                    keyPress.current = true;
                 }
                 if (!keyPress.current && e.key === 'ArrowLeft') {
                     currentFunc = personLeft;
-                    keyPress.current = true;
                 }
             }, false);
+            var a = Math.random();
 
             //animate
             function animate() {
-                if (window.location.pathname === '/') return;
+                if (window.location.pathname === '/' || resize.current) {
+                    resize.current = false;
+                    return;
+                }
                 requestAnimationFrame(animate);
-                if (currentFunc) currentFunc();
+                if (currentFunc) {
+                    keyPress.current = true;
+                    currentFunc();
+                }
                 renderer.render(scene, camera);
             };
             animate()
@@ -127,6 +157,10 @@ export default React.memo(function Gallery({ setShift }) {
             setRender(true);
         }
         if (animReady && workExpCanvas.current) expAnim();
+        window.onresize = () => {
+            resize.current = true;
+            expAnim();
+        }
         // else if (workExpCanvas.current) {
         //     document.addEventListener('animationend', startWorkExp);
         //     function startWorkExp(e) {
@@ -137,10 +171,6 @@ export default React.memo(function Gallery({ setShift }) {
         //     }
         // }
     });
-
-    // function forward(){
-    //     while()
-    // }
 
     return (
         <>
@@ -171,7 +201,10 @@ export default React.memo(function Gallery({ setShift }) {
             {
                 (render) ?
                     <div className='workExperience web-page'>
-                        <canvas ref={workExpCanvas}></canvas>
+                        <div id="test">
+                            <canvas ref={workExpCanvas}></canvas>
+                        </div>
+                        asdf
                     </div >
                     : ''
             }
