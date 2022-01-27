@@ -12,24 +12,25 @@ export default React.memo(function Gallery({ setShift }) {
     const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
     const [animReady, setAnimReady] = useState(true);
     const workExpCanvas = useRef();
+    const keyPress = useRef(false);
 
-    function expAnim() {
+    async function expAnim() {
         const scene = new THREE.Scene();
 
         //camera
-        const cameraWidth = 10;
+        const cameraWidth = 15;
         const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
-        const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -1, 100);
-        camera.position.set(4, 4, 4);
+        const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -20, 100);
+        camera.position.set(7, 2, 5);
         camera.lookAt(0, 0, 0);
 
         //stair
-        var length = 9;
+        var length = 10;
         var scale = Math.round(length / 8)
         for (var i = 1; i <= length; i++) {
             var cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, i), new THREE.MeshLambertMaterial({ color: 0xf00000 }));
             cube.position.y = length - i;
-            cube.position.z = i / 2;
+            cube.position.z = i / 2 - Math.round(length / 2) + 1;
             cube.castShadow = true;
             scene.add(cube);
         }
@@ -49,7 +50,7 @@ export default React.memo(function Gallery({ setShift }) {
             const person = glb.scene;
             person.scale.set(0.5, 0.5, 0.5);
             person.position.y = 1.295;
-            person.position.z = length + 0.5;
+            person.position.z = length - Math.round(length / 2) + 1.5;
             person.castShadow = true;
             scene.add(person);
 
@@ -59,27 +60,47 @@ export default React.memo(function Gallery({ setShift }) {
 
             var pastY = person.position.y;
 
-            var mid;
-
             function personRight() {
-                // console.log(person.position.z, past)
                 if (person.position.z != pastZ - 1) {
-                    interval += 0.02;
-                    person.position.z = pastZ - interval;
-                    person.position.y = (Math.sin((pastZ - person.position.z) * 2) / 2 + pastY + 0.50);
+                    interval++;
+                    person.position.z = pastZ - interval / 10;
+                    if (interval / 10 < 0.5) person.position.y = interval / 10 * 2 + pastY;
+                    else { person.position.y = Math.sqrt(1 - Math.pow(interval / 10 * 4 - 3, 2)) / 4 + 1 + pastY }
                 }
                 else {
-                    console.log(pastZ, pastY)
                     pastZ--;
                     interval = 0;
                     pastY++;
                     currentFunc = undefined;
+                    keyPress.current = false;
+                }
+            }
+            function personLeft() {
+                if (person.position.z != pastZ + 1) {
+                    interval++;
+                    person.position.z = pastZ + interval / 10;
+                    if (interval / 10 < 0.5) person.position.y = Math.sqrt(1 - Math.pow((1 - interval / 10) * 4 - 3, 2)) / 4 + pastY;
+                    else { person.position.y = pastY - interval / 10 * 2 + 1 }
+                }
+                else {
+                    pastZ++;
+                    interval = 0;
+                    pastY--;
+                    currentFunc = undefined;
+                    keyPress.current = false;
                 }
             }
 
             document.addEventListener('keydown', (e) => {
-                //!keyDown.current && 
-                if (e.key === 'ArrowRight') { currentFunc = personRight;/*keyDown.current = true*/ };
+                console.log(keyPress.current)
+                if (!keyPress.current && e.key === 'ArrowRight') {
+                    currentFunc = personRight;
+                    keyPress.current = true;
+                }
+                if (!keyPress.current && e.key === 'ArrowLeft') {
+                    currentFunc = personLeft;
+                    keyPress.current = true;
+                }
             }, false);
 
             //animate
