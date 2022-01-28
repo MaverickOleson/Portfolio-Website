@@ -46,18 +46,9 @@ export default React.memo(function Gallery({ setShift }) {
         const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: workExpCanvas.current });
         renderer.setPixelRatio(window.devicePixelRatio);
         if (window.innerWidth > window.innerHeight) {
-            renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
-            // workExpCanvas.current.style.clipPath = `inset(calc(20% - ${window.innerWidth / 19}px) 30% 0 30%)`;
+            renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.9);
         } else {
             renderer.setSize(window.innerWidth * 2, window.innerHeight * 2);
-            // workExpCanvas.current.style.clipPath = 'inset(0% 30% 0% 30%)';
-            // workExpCanvas.current.style.transform = 'translateY(-30%)';
-            // workExpCanvas.current.style.clipPath = 'inset(30% 30% 30% 30%)';
-            // if (window.innerWidth > 615) workExpCanvas.current.style.clipPath = 'inset(28% 30% 27% 30%)';
-            // else if (window.innerWidth > 518) workExpCanvas.current.style.clipPath = 'inset(30% 30% 30% 30%)';
-            // else {
-            //     workExpCanvas.current.style.clipPath = 'inset(33% 30% 33% 30%)';
-            // }
         }
 
         const loader = new GLTFLoader();
@@ -161,15 +152,6 @@ export default React.memo(function Gallery({ setShift }) {
             resize.current = true;
             expAnim();
         }
-        // else if (workExpCanvas.current) {
-        //     document.addEventListener('animationend', startWorkExp);
-        //     function startWorkExp(e) {
-        //         if (e.animationName === 'shift3F') {
-        //             expAnim();
-        //             document.removeEventListener('animationend', startWorkExp);
-        //         }
-        //     }
-        // }
     });
 
     return (
@@ -201,7 +183,7 @@ export default React.memo(function Gallery({ setShift }) {
             {
                 (render) ?
                     <div className='workExperience web-page'>
-                        <div id="test">
+                        <div id="expCanvCont">
                             <canvas ref={workExpCanvas}></canvas>
                         </div>
                         asdf

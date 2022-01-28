@@ -5,13 +5,19 @@
     align-items: center;
     background: #f008;
     // background: linear-gradient(to top , #f808, #f008);
-    #test{
-        width: 30%;
+    #expCanvCont{
+        width: 50%;
+        height: 43vw;
         overflow: hidden;
-        canvas{
-            position: relative;
-            right: 70%
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
         // margin-bottom: -60%;
+    }
+    @media (orientation: portrait) {
+        #expCanvCont{
+            width: 80%;
+            height: 95vw;
+        }   
     }
 }
