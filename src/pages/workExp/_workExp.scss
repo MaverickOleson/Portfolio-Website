@@ -6,18 +6,22 @@
     background: #f008;
     // background: linear-gradient(to top , #f808, #f008);
     #expCanvCont{
-        width: 50%;
+        width: 40vw;
         height: 43vw;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        // margin-bottom: -60%;
+    }
+    #test{
+        canvas{
+            position: absolute;
+        }
     }
     @media (orientation: portrait) {
         #expCanvCont{
-            width: 80%;
+            width: 80vw;
             height: 95vw;
-        }   
+        }
     }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { ImFileWord } from 'react-icons/im';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -108,15 +109,20 @@ export default React.memo(function Gallery({ setShift }) {
                 }
             }
 
-            document.addEventListener('keydown', (e) => {
-                if (!keyPress.current && e.key === 'ArrowRight') {
+            function personControls(e) {
+                if (window.location.pathname === '/') {
+                    document.removeEventListener('keydown', personControls, false);
+                    return;
+                }
+                if (!keyPress.current && (e.code === 'ArrowRight' || e.code === 'KeyD')) {
                     currentFunc = personRight;
                 }
-                if (!keyPress.current && e.key === 'ArrowLeft') {
+                if (!keyPress.current && (e.code === 'ArrowLeft' || e.code === 'KeyA')) {
                     currentFunc = personLeft;
                 }
-            }, false);
-            var a = Math.random();
+            }
+
+            document.addEventListener('keydown', personControls, false);
 
             //animate
             function animate() {
@@ -145,13 +151,13 @@ export default React.memo(function Gallery({ setShift }) {
             setNavText('Home');
         }
         if (window.location.pathname === '/workExperience') {
+            window.onresize = () => {
+                resize.current = true;
+                expAnim();
+            }
             setRender(true);
         }
         if (animReady && workExpCanvas.current) expAnim();
-        window.onresize = () => {
-            resize.current = true;
-            expAnim();
-        }
     });
 
     return (
@@ -186,7 +192,9 @@ export default React.memo(function Gallery({ setShift }) {
                         <div id="expCanvCont">
                             <canvas ref={workExpCanvas}></canvas>
                         </div>
-                        asdf
+                        <div id="test">
+                            <canvas></canvas>
+                        </div>
                     </div >
                     : ''
             }

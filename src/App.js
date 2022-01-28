@@ -14,7 +14,7 @@ export default React.memo(function App() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }
   window.addEventListener("keydown", function (e) {
-    if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.key) > -1) {
+    if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
       e.preventDefault();
     }
   }, false);
