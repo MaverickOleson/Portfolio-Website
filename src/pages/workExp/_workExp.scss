@@ -5,23 +5,35 @@
     align-items: center;
     background: #f008;
     // background: linear-gradient(to top , #f808, #f008);
-    #expCanvCont{
-        width: 40vw;
-        height: 43vw;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #test{
-        canvas{
+    #exp{
+        height: 40vw;
+        #expCanvCont{
+            width: 40vw;
+            height: 43vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
+            transform: translateX(-50%);
+        }
+        p{
+            width: 40vw;
+            transform: translateX(50%);
         }
     }
     @media (orientation: portrait) {
-        #expCanvCont{
-            width: 80vw;
+        #exp{
             height: 95vw;
+            #expCanvCont{
+                width: 80vw;
+                height: 95vw;
+                transform: none;
+            }
+            p{
+                width: 80vw;
+                transform: translateY(95vw);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ImFileWord } from 'react-icons/im';
 import { useNavigate } from 'react-router-dom';
+import { keyframes } from 'styled-components';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import person from '../../person.glb';
@@ -11,6 +12,7 @@ export default React.memo(function Gallery({ setShift }) {
     const [navText, setNavText] = useState();
     const careerRings = ['Words', 'Are', 'Pretty', 'Cool'];
     const [animReady, setAnimReady] = useState(true);
+    const personFunctions = useRef([]);
     const workExpCanvas = useRef();
     const resize = useRef(false);
     const keyPress = useRef(false);
@@ -62,7 +64,6 @@ export default React.memo(function Gallery({ setShift }) {
             person.castShadow = true;
             scene.add(person);
 
-            var currentFunc;
             var pastZ = person.position.z;
             var interval = 0;
 
@@ -70,7 +71,7 @@ export default React.memo(function Gallery({ setShift }) {
 
             function personRight() {
                 if (pastZ === maxLeft - stairLength) {
-                    currentFunc = undefined;
+                    personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     return;
                 }
@@ -84,13 +85,13 @@ export default React.memo(function Gallery({ setShift }) {
                     pastZ--;
                     interval = 0;
                     pastY++;
-                    currentFunc = undefined;
+                    personFunctions.current[0] = undefined;
                     keyPress.current = false;
                 }
             }
             function personLeft() {
                 if (pastZ === maxLeft) {
-                    currentFunc = undefined;
+                    personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     return;
                 }
@@ -104,25 +105,14 @@ export default React.memo(function Gallery({ setShift }) {
                     pastZ++;
                     interval = 0;
                     pastY--;
-                    currentFunc = undefined;
+                    personFunctions.current[0] = undefined;
                     keyPress.current = false;
                 }
             }
 
-            function personControls(e) {
-                if (window.location.pathname === '/') {
-                    document.removeEventListener('keydown', personControls, false);
-                    return;
-                }
-                if (!keyPress.current && (e.code === 'ArrowRight' || e.code === 'KeyD')) {
-                    currentFunc = personRight;
-                }
-                if (!keyPress.current && (e.code === 'ArrowLeft' || e.code === 'KeyA')) {
-                    currentFunc = personLeft;
-                }
-            }
+            personFunctions.current = [undefined, personRight, personLeft]
 
-            document.addEventListener('keydown', personControls, false);
+            var a = Math.random();
 
             //animate
             function animate() {
@@ -131,9 +121,9 @@ export default React.memo(function Gallery({ setShift }) {
                     return;
                 }
                 requestAnimationFrame(animate);
-                if (currentFunc) {
+                if (personFunctions.current[0]) {
                     keyPress.current = true;
-                    currentFunc();
+                    personFunctions.current[0]();
                 }
                 renderer.render(scene, camera);
             };
@@ -141,6 +131,17 @@ export default React.memo(function Gallery({ setShift }) {
         }, undefined, (error) => {
             console.error(error);
         });
+    }
+
+    function personControls(e) {
+        if (personFunctions.current[1]) {
+            if (!keyPress.current && (e.code === 'ArrowRight' || e.code === 'KeyD')) {
+                personFunctions.current[0] = personFunctions.current[1];
+            }
+            if (!keyPress.current && (e.code === 'ArrowLeft' || e.code === 'KeyA')) {
+                personFunctions.current[0] = personFunctions.current[2];
+            }
+        }
     }
 
     useEffect(() => {
@@ -159,6 +160,10 @@ export default React.memo(function Gallery({ setShift }) {
         }
         if (animReady && workExpCanvas.current) expAnim();
     });
+
+    useEffect(() => {
+        document.addEventListener('keydown', personControls, false);
+    }, [])
 
     return (
         <>
@@ -189,11 +194,11 @@ export default React.memo(function Gallery({ setShift }) {
             {
                 (render) ?
                     <div className='workExperience web-page'>
-                        <div id="expCanvCont">
-                            <canvas ref={workExpCanvas}></canvas>
-                        </div>
-                        <div id="test">
-                            <canvas></canvas>
+                        <div id="exp">
+                            <div id="expCanvCont">
+                                <canvas ref={workExpCanvas}></canvas>
+                            </div>
+                            <p>asdfsdfffffffffffffffffffffffffffffffffffffff<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />sdf</p>
                         </div>
                     </div >
                     : ''

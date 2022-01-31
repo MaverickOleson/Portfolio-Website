@@ -127,7 +127,7 @@
                 transform: rotateZ(45deg) translateX($spread) rotateZ(-45deg);
             }
             100% {
-                transform: rotateZ(0) translateX($spread);
+                transform: translateX($spread);
             }
         }
         @keyframes rotateB2 {
