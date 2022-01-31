@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { ImFileWord } from 'react-icons/im';
 import { useNavigate } from 'react-router-dom';
-import { keyframes } from 'styled-components';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import person from '../../person.glb';
@@ -10,32 +8,32 @@ export default React.memo(function Gallery({ setShift }) {
     const navigation = useNavigate();
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
-    const careerRings = ['Words', 'Are', 'Pretty', 'Cool'];
+    const careerRings = ['<h2>Became an Eagle Scout</h2>After 8 years of going to meetings and doing work to earn merit badges, I ', 'Are', 'Pretty', 'Cool'];
+    const currentRing = useRef(-1);
     const [animReady, setAnimReady] = useState(true);
     const personFunctions = useRef([]);
     const workExpCanvas = useRef();
     const resize = useRef(false);
     const keyPress = useRef(false);
+    const expText = useRef();
 
     //make more variables
 
     async function expAnim() {
         const scene = new THREE.Scene();
 
-        const stairLength = 10;
-
         //camera
-        const cameraWidth = (stairLength > 9) ? stairLength * 1.6 : (stairLength > 4) ? stairLength * 2 : stairLength * 5;
+        const cameraWidth = (careerRings.length > 9) ? careerRings.length * 1.6 : (careerRings.length > 4) ? careerRings.length * 2 : careerRings.length * 5;
         const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
         const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -20, 100);
         camera.position.set(4, 4, 4);
         camera.lookAt(0, 0, 0);
 
         //stair
-        for (var i = 1; i <= stairLength; i++) {
+        for (var i = 1; i <= careerRings.length; i++) {
             var cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, i), new THREE.MeshLambertMaterial({ color: 0xf00000 }));
-            cube.position.y = stairLength - i - stairLength / 2;
-            cube.position.z = i / 2 - Math.round(stairLength / 2) + 1;
+            cube.position.y = careerRings.length - i - careerRings.length / 2;
+            cube.position.z = i / 2 - Math.round(careerRings.length / 2) + 1;
             cube.castShadow = true;
             scene.add(cube);
         }
@@ -58,8 +56,8 @@ export default React.memo(function Gallery({ setShift }) {
         loader.load(person, (glb) => {
             const person = glb.scene;
             person.scale.set(0.5, 0.5, 0.5);
-            person.position.y = 1.295 - stairLength / 2;
-            const maxLeft = stairLength - Math.round(stairLength / 2) + 1.5;
+            person.position.y = 1.295 - careerRings.length / 2;
+            const maxLeft = careerRings.length - Math.round(careerRings.length / 2) + 1.5;
             person.position.z = maxLeft;
             person.castShadow = true;
             scene.add(person);
@@ -70,7 +68,7 @@ export default React.memo(function Gallery({ setShift }) {
             var pastY = person.position.y;
 
             function personRight() {
-                if (pastZ === maxLeft - stairLength) {
+                if (pastZ === maxLeft - careerRings.length) {
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     return;
@@ -87,6 +85,9 @@ export default React.memo(function Gallery({ setShift }) {
                     pastY++;
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
+                    currentRing.current++;
+                    expText.current.innerHTML = careerRings[currentRing.current] || '';
+                    (expText.current.className === 'slideRight1') ? expText.current.className = 'slideRight2' : expText.current.className = 'slideRight1';
                 }
             }
             function personLeft() {
@@ -107,12 +108,13 @@ export default React.memo(function Gallery({ setShift }) {
                     pastY--;
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
+                    currentRing.current--;
+                    expText.current.innerHTML = careerRings[currentRing.current] || '';
+                    (expText.current.className === 'slideLeft1') ? expText.current.className = 'slideLeft2' : expText.current.className = 'slideLeft1';
                 }
             }
 
             personFunctions.current = [undefined, personRight, personLeft]
-
-            var a = Math.random();
 
             //animate
             function animate() {
@@ -155,15 +157,17 @@ export default React.memo(function Gallery({ setShift }) {
             window.onresize = () => {
                 resize.current = true;
                 expAnim();
+                expText.current.innerHTML = '';
+                currentRing.current = -1;
             }
             setRender(true);
         }
-        if (animReady && workExpCanvas.current) expAnim();
+        if (animReady && workExpCanvas.current) { expAnim(); currentRing.current = -1; };
     });
 
     useEffect(() => {
         document.addEventListener('keydown', personControls, false);
-    }, [])
+    }, []);
 
     return (
         <>
@@ -198,7 +202,9 @@ export default React.memo(function Gallery({ setShift }) {
                             <div id="expCanvCont">
                                 <canvas ref={workExpCanvas}></canvas>
                             </div>
-                            <p>asdfsdfffffffffffffffffffffffffffffffffffffff<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />sdf</p>
+                            <div id="expTextCont">
+                                <h1 ref={expText}></h1>
+                            </div>
                         </div>
                     </div >
                     : ''

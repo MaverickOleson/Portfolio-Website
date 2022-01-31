@@ -6,7 +6,8 @@
     background: #f008;
     // background: linear-gradient(to top , #f808, #f008);
     #exp{
-        height: 40vw;
+        width: 80vw;
+        height: 43vw;
         #expCanvCont{
             width: 40vw;
             height: 43vw;
@@ -15,23 +16,78 @@
             justify-content: center;
             align-items: center;
             position: absolute;
-            transform: translateX(-50%);
         }
-        p{
+        #expTextCont{
             width: 40vw;
-            transform: translateX(50%);
+            height: 43vw;
+            transform: translateX(100%);
+            overflow-y: scroll;
+            .slideRight1{
+                animation: slideRight1 0.5s ease forwards;
+            }
+            .slideRight2{
+                animation: slideRight2 0.5s ease forwards;
+            }
+            .slideLeft1{
+                animation: slideLeft1 0.5s ease forwards;
+            }
+            .slideLeft2{
+                animation: slideLeft2 0.5s ease forwards;
+            }
+            @keyframes slideRight1 {
+                0%{
+                    opacity: 0.2;
+                    transform: translateX(-50%);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes slideRight2 {
+                0%{
+                    opacity: 0.2;
+                    transform: translateX(-50%);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes slideLeft1 {
+                0%{
+                    opacity: 0.2;
+                    transform: translateX(50%);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes slideLeft2 {
+                0%{
+                    opacity: 0.2;
+                    transform: translateX(50%);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
         }
     }
     @media (orientation: portrait) {
         #exp{
+            width: 80vw;
             height: 95vw;
             #expCanvCont{
                 width: 80vw;
                 height: 95vw;
                 transform: none;
             }
-            p{
+            #expTextCont{
                 width: 80vw;
+                height: 95vw;
                 transform: translateY(95vw);
             }
         }

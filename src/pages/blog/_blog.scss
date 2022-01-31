@@ -6,36 +6,45 @@
     border-bottom-left-radius: 30px;
     // background: linear-gradient(to bottom, #f0f8, #0ff8);
     color: #f8f8ffea;
+    .tab {
+            display: inline-block;
+            margin-left: 20px;
+        }
     #blogPostCont{
-        width: 100%;
-        height: calc(50vh - 14px);
+        width: 70%;
+        height: 80vh;
+        text-align:left;
         z-index: -1;
         display: flex;
         flex-direction: column;
         align-items: center;
         overflow-y: scroll;
+        word-wrap: break-word;
         *{
             font-size: 58px;
-            width: fit-content;
+            width: 100%;
             margin: 0;
+            &::first-letter {
+                margin-left: 80px;
+            }
         }
     }
     .slider{
         margin-top: 10vh;
     }
-    .slideRight1{
-        animation: slideRight1 0.5s ease forwards;
+    .slideDown1{
+        animation: slideDown1 0.5s ease forwards;
     }
-    .slideRight2{
-        animation: slideRight2 0.5s ease forwards;
+    .slideDown2{
+        animation: slideDown2 0.5s ease forwards;
     }
-    .slideLeft1{
-        animation: slideLeft1 0.5s ease forwards;
+    .slideUp1{
+        animation: slideUp1 0.5s ease forwards;
     }
-    .slideLeft2{
-        animation: slideLeft2 0.5s ease forwards;
+    .slideUp2{
+        animation: slideUp2 0.5s ease forwards;
     }
-    @keyframes slideRight1 {
+    @keyframes slideDown1 {
         0%{
             opacity: 0.2;
             transform: translateY(0);
@@ -45,7 +54,7 @@
             transform: translateY(5vh);
         }
     }
-    @keyframes slideRight2 {
+    @keyframes slideDown2 {
         0%{
             opacity: 0.2;
             transform: translateY(0);
@@ -55,7 +64,7 @@
             transform: translateY(5vh);
         }
     }
-    @keyframes slideLeft1 {
+    @keyframes slideUp1 {
         0%{
             opacity: 0.2;
             transform: translateY(10vh);
@@ -65,7 +74,7 @@
             transform: translateY(5vh);
         }
     }
-    @keyframes slideLeft2 {
+    @keyframes slideUp2 {
         0%{
             opacity: 0.2;
             transform: translateY(10vh);
