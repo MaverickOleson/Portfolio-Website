@@ -1,14 +1,14 @@
-.workExperience {
+.career {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f008;
+    background: #f004;
     // background: linear-gradient(to top , #f808, #f008);
-    #exp{
+    #career{
         width: 80vw;
         height: 43vw;
-        #expCanvCont{
+        #careerCanvCont{
             width: 40vw;
             height: 43vw;
             overflow: hidden;
@@ -16,12 +16,42 @@
             justify-content: center;
             align-items: center;
             position: absolute;
+            #arrowLeft{
+                font-size: 100px;
+                position: absolute;
+                bottom: 1vw;
+                right: calc(1vw + 150px);
+                user-select: none;
+                color: ghostwhite;
+                &:hover{
+                    cursor: pointer;
+                }
+                &:active{
+                    color: gray;
+                }
+            }
+            #arrowRight{
+                font-size: 100px;
+                position: absolute;
+                bottom: 1vw;
+                right: 1vw;
+                user-select: none;
+                color: ghostwhite;
+                &:hover{
+                    cursor: pointer;
+                }
+                &:active{
+                    color: gray;
+                }
+            }
         }
-        #expTextCont{
+        #careerTextCont{
             width: 40vw;
             height: 43vw;
             transform: translateX(100%);
             overflow-y: scroll;
+            background: ghostwhite;
+            color: black;
             .slideRight1{
                 animation: slideRight1 0.5s ease forwards;
             }
@@ -76,19 +106,29 @@
             }
         }
     }
-    @media (orientation: portrait) {
-        #exp{
+    @media screen and (orientation: portrait) {
+        #career{
             width: 80vw;
-            height: 95vw;
-            #expCanvCont{
+            height: 190vw;
+            transform: translateY(20vw);
+            #careerCanvCont{
                 width: 80vw;
                 height: 95vw;
                 transform: none;
+                #arrowRight{
+                    font-size: 60px;
+                }
+                #arrowLeft{
+                    font-size: 60px;
+                    right: calc(1vw + 100px);
+                }
             }
-            #expTextCont{
+            #careerTextCont{
                 width: 80vw;
                 height: 95vw;
                 transform: translateY(95vw);
+                background: transparent;
+                color: ghostwhite;
             }
         }
     }

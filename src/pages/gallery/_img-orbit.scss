@@ -1,14 +1,22 @@
 .img-orbit {
     // all: unset;
-    @media (orientation: landscape) {
-        width: 96vh;
-        transform: translateY(57.5vh);
-        @media screen and (max-width: 1150px) {
+    @media screen and (orientation: landscape) {
+        width: 94vh;
+        transform: translateY(56vh);
+        @media screen and (max-height: 481px) {
             width: 81vh;
             transform: translateY(50.5vh);
         }
+        @media screen and (max-height: 307px) {
+            width: 81vh;
+            transform: translateY(44vh);
+        }
+        @media screen and (max-width: 1150px) {
+            width: 81vh;
+            transform: translateY(48vh);
+        }
     }
-    @media (orientation: portrait) {
+    @media screen and (orientation: portrait) {
         width: 75vw;
         transform: translateY(50vw);
     }
@@ -19,17 +27,6 @@
     position: relative;
     margin: auto;
     $time: 0.4s;
-    &.orbit {
-        animation: orbit $time linear forwards;
-    }
-    @keyframes orbit {
-        0% {
-            transform: rotateZ(0deg);
-        }
-        100% {
-            transform: rotateZ(45deg);
-        }
-    }
     img {
         // all: unset;
         width: 23%;
@@ -163,32 +160,31 @@
     }
     .orbiters {
         display: flex;
+        justify-content: center;
         transform: translateY(35.8vh);
         @media screen and (max-width: 1150px) {
             transform: translateY(32vh);
         }
-        @media (orientation: portrait) {
+        @media screen and (orientation: portrait) {
             transform: translateY(30vw);
         }
         * {
-            font-size: 30px;
+            font-size: 40px;
             margin: 10px;
+        }
+        #galText {
+            width: 70vw;
+            word-wrap: break-word;
+            font-size: 20px;
+            position: absolute;
+            transform: translateY(60px);
+            padding-bottom: 15px;
         }
         svg {
             user-select: none;
             &:hover {
                 cursor: pointer;
             }
-        }
-    }
-    .text {
-        position: absolute;
-        transform: translateY(42vh);
-        @media screen and (max-width: 1150px) {
-            transform: translateY(40.5vh);
-        }
-        @media (orientation: portrait) {
-            transform: translateY(calc(28vw + 50px));
         }
     }
 }

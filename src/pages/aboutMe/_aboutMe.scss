@@ -1,18 +1,24 @@
 .aboutMe {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background: #f0f8;
     // background: linear-gradient(to bottom, #fff8, #f0f8);
     color: ghostwhite;
     .info {
+        width: 100%;
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
         img {
-            width: 40vh;
-            height: 40vh;
+            width: 40vw;
+            height: 40vw;
             border-radius: 100%;
+        }
+        p{
+            width: 400px;
+            word-wrap: break-word;
         }
     }
 }

@@ -14,10 +14,9 @@ export default React.memo(function Blog({ setShift }) {
     useEffect(() => {
         if (window.location.pathname === '/') {
             setNavText('Blog');
-        } else {
-            setNavText('Home');
         }
         if (window.location.pathname === '/blog') {
+            setNavText('Home');
             setRender(true);
         }
     });
@@ -46,13 +45,14 @@ export default React.memo(function Blog({ setShift }) {
     }
     return (
         <>
-            <h1 className='navSquare' id="blogNav" onClick={() => {
+            <h1 className='navSquare' id="blogNav" onPointerDown={() => {
                 if (window.location.pathname === '/') {
                     navigation('/blog');
                     setShift(' shift1F');
                     document.addEventListener('animationend', startBlog);
                     function startBlog(e) {
                         if (e.animationName === 'shift1F') {
+                            setShift(' blog');
                             postText.current.style.display = 'block';
                             document.removeEventListener('animationend', startBlog);
                         }
@@ -68,11 +68,11 @@ export default React.memo(function Blog({ setShift }) {
                 else {
                     navigation('/');
                     setShift(' shift1B');
-                    document.addEventListener('animationend', startBlog);
-                    function startBlog(e) {
+                    document.addEventListener('animationend', endBlog);
+                    function endBlog(e) {
                         if (e.animationName === 'shift1B') {
                             setRender(false);
-                            document.removeEventListener('animationend', startBlog);
+                            document.removeEventListener('animationend', endBlog);
                         }
                     }
                 }

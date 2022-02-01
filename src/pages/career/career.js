@@ -3,27 +3,31 @@ import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import person from '../../person.glb';
+import { ImArrowLeft, ImArrowRight } from 'react-icons/im';
 
-export default React.memo(function Gallery({ setShift }) {
+export default React.memo(function Career({ setShift }) {
     const navigation = useNavigate();
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
-    const careerRings = ['<h2>Became an Eagle Scout</h2>After 8 years of going to meetings and doing work to earn merit badges, I ', 'Are', 'Pretty', 'Cool'];
+    const careerRings = ['<span>Became an Eagle Scout</span>After 8 years of going to meetings and doing work to earn merit badges, I ', 'Are', 'Pretty', 'Cool'];
     const currentRing = useRef(-1);
     const [animReady, setAnimReady] = useState(true);
     const personFunctions = useRef([]);
-    const workExpCanvas = useRef();
+    const loaded = useRef(false);
+    const careerCanvas = useRef();
     const resize = useRef(false);
     const keyPress = useRef(false);
-    const expText = useRef();
+    const careerText = useRef();
 
     //make more variables
 
-    async function expAnim() {
+    async function careerAnim() {
+        const unit = (window.innerWidth > window.innerHeight) ? 1 : 2.5;
+
         const scene = new THREE.Scene();
 
         //camera
-        const cameraWidth = (careerRings.length > 9) ? careerRings.length * 1.6 : (careerRings.length > 4) ? careerRings.length * 2 : careerRings.length * 5;
+        const cameraWidth = (careerRings.length > 9) ? careerRings.length * 1.6 / unit : (careerRings.length > 4) ? careerRings.length * 2 / unit : careerRings.length * 5 / unit;
         const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
         const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -20, 100);
         camera.position.set(4, 4, 4);
@@ -44,13 +48,9 @@ export default React.memo(function Gallery({ setShift }) {
         scene.add(directionalLight);
 
         //renderer
-        const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: workExpCanvas.current });
+        const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: careerCanvas.current });
         renderer.setPixelRatio(window.devicePixelRatio);
-        if (window.innerWidth > window.innerHeight) {
-            renderer.setSize(window.innerWidth * 0.9, window.innerHeight * 0.9);
-        } else {
-            renderer.setSize(window.innerWidth * 2, window.innerHeight * 2);
-        }
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
         const loader = new GLTFLoader();
         loader.load(person, (glb) => {
@@ -86,8 +86,8 @@ export default React.memo(function Gallery({ setShift }) {
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     currentRing.current++;
-                    expText.current.innerHTML = careerRings[currentRing.current] || '';
-                    (expText.current.className === 'slideRight1') ? expText.current.className = 'slideRight2' : expText.current.className = 'slideRight1';
+                    careerText.current.innerHTML = careerRings[currentRing.current] || 'My Career';
+                    (careerText.current.className === 'slideRight1') ? careerText.current.className = 'slideRight2' : careerText.current.className = 'slideRight1';
                 }
             }
             function personLeft() {
@@ -109,12 +109,12 @@ export default React.memo(function Gallery({ setShift }) {
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     currentRing.current--;
-                    expText.current.innerHTML = careerRings[currentRing.current] || '';
-                    (expText.current.className === 'slideLeft1') ? expText.current.className = 'slideLeft2' : expText.current.className = 'slideLeft1';
+                    careerText.current.innerHTML = careerRings[currentRing.current] || 'My Career';
+                    (careerText.current.className === 'slideLeft1') ? careerText.current.className = 'slideLeft2' : careerText.current.className = 'slideLeft1';
                 }
             }
 
-            personFunctions.current = [undefined, personRight, personLeft]
+            personFunctions.current = [undefined, personRight, personLeft];
 
             //animate
             function animate() {
@@ -146,38 +146,41 @@ export default React.memo(function Gallery({ setShift }) {
         }
     }
 
+    document.addEventListener('keydown', personControls, false);
+
     useEffect(() => {
         if (window.location.pathname === '/') {
             setAnimReady(false);
-            setNavText('Work\nExp.');
-        } else {
-            setNavText('Home');
+            setNavText('Career');
         }
-        if (window.location.pathname === '/workExperience') {
-            window.onresize = () => {
-                resize.current = true;
-                expAnim();
-                expText.current.innerHTML = '';
-                currentRing.current = -1;
-            }
+        if (window.location.pathname === '/career') {
+            setNavText('Home');
             setRender(true);
         }
-        if (animReady && workExpCanvas.current) { expAnim(); currentRing.current = -1; };
+        if (animReady && careerCanvas.current && !loaded.current) { careerAnim(); currentRing.current = -1; loaded.current = true };
     });
 
-    useEffect(() => {
-        document.addEventListener('keydown', personControls, false);
-    }, []);
+    if (window.location.pathname === '/career') {
+        window.addEventListener('resize', () => {
+            if (careerText.current) {
+                resize.current = true;
+                careerAnim();
+                careerText.current.innerHTML = 'My Career';
+                currentRing.current = -1;
+            }
+        });
+    }
 
     return (
         <>
-            <h1 className='navSquare' id="workExpNav" onClick={() => {
+            <h1 className='navSquare' id="careerNav" onPointerDown={() => {
                 if (window.location.pathname === '/') {
-                    navigation('/workExperience');
+                    navigation('/career');
                     setShift(' shift3F');
                     document.addEventListener('animationend', startBlog);
                     function startBlog(e) {
                         if (e.animationName === 'shift3F') {
+                            setShift(' career');
                             setAnimReady(true);
                             document.removeEventListener('animationend', startBlog);
                         }
@@ -186,24 +189,34 @@ export default React.memo(function Gallery({ setShift }) {
                 else {
                     navigation('/');
                     setShift(' shift3B');
-                    document.addEventListener('animationend', startWorkExp);
-                    function startWorkExp(e) {
+                    document.addEventListener('animationend', endCareer);
+                    function endCareer(e) {
                         if (e.animationName === 'shift3B') {
                             setRender(false);
-                            document.removeEventListener('animationend', startWorkExp);
+                            document.removeEventListener('animationend', endCareer);
                         }
                     }
                 }
             }}>{navText}</h1>
             {
                 (render) ?
-                    <div className='workExperience web-page'>
-                        <div id="exp">
-                            <div id="expCanvCont">
-                                <canvas ref={workExpCanvas}></canvas>
+                    <div className='career web-page'>
+                        <div id="career">
+                            <div id="careerCanvCont">
+                                <canvas ref={careerCanvas}></canvas>
+                                <ImArrowLeft id="arrowLeft" onPointerDown={() => {
+                                    document.dispatchEvent(new KeyboardEvent('keydown', {
+                                        'code': 'KeyA'
+                                    }))
+                                }} />
+                                <ImArrowRight id="arrowRight" onPointerDown={() => {
+                                    document.dispatchEvent(new KeyboardEvent('keydown', {
+                                        'code': 'KeyD'
+                                    }))
+                                }} />
                             </div>
-                            <div id="expTextCont">
-                                <h1 ref={expText}></h1>
+                            <div id="careerTextCont">
+                                <h1 ref={careerText}>My Career</h1>
                             </div>
                         </div>
                     </div >

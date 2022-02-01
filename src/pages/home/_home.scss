@@ -4,7 +4,7 @@
     main{
         width: calc(80vw - 32vh);
         height: fit-content;
-        @media (orientation: portrait) {
+        @media screen and (orientation: portrait) {
             width: calc(100vw - 24vh);
         }
         font-size: 3.5vw;

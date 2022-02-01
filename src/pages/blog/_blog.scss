@@ -3,13 +3,12 @@
     flex-direction: column;
     align-items: center;
     background: #0ff8;
-    border-bottom-left-radius: 30px;
     // background: linear-gradient(to bottom, #f0f8, #0ff8);
     color: #f8f8ffea;
     .tab {
-            display: inline-block;
-            margin-left: 20px;
-        }
+        display: inline-block;
+        margin-left: 20px;
+    }
     #blogPostCont{
         width: 70%;
         height: 80vh;

@@ -7,14 +7,13 @@ export default React.memo(function AboutMe({ setShift }) {
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
-    const posts = [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+    const posts = [['I lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssss', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
     useEffect(() => {
         if (window.location.pathname === '/') {
             setNavText('About\nMe');
-        } else {
-            setNavText('Home');
         }
         if (window.location.pathname === '/aboutMe') {
+            setNavText('Home');
             setRender(true);
         }
     });
@@ -24,19 +23,26 @@ export default React.memo(function AboutMe({ setShift }) {
     }
     return (
         <>
-            <h1 className='navSquare' id="aboutMeNav" onClick={() => {
+            <h1 className='navSquare' id="aboutMeNav" onPointerDown={() => {
                 if (window.location.pathname === '/') {
                     navigation('/aboutMe');
                     setShift(' shift2F');
+                    document.addEventListener('animationend', startAboutMe);
+                    function startAboutMe(e) {
+                        if (e.animationName === 'shift2F') {
+                            setShift(' aboutMe');
+                            document.removeEventListener('animationend', startAboutMe);
+                        }
+                    }
                 }
                 else {
                     navigation('/');
                     setShift(' shift2B');
-                    document.addEventListener('animationend', startBlog);
-                    function startBlog(e) {
+                    document.addEventListener('animationend', endAboutMe);
+                    function endAboutMe(e) {
                         if (e.animationName === 'shift2B') {
                             setRender(false);
-                            document.removeEventListener('animationend', startBlog);
+                            document.removeEventListener('animationend', endAboutMe);
                         }
                     }
                 }
@@ -44,13 +50,12 @@ export default React.memo(function AboutMe({ setShift }) {
             {
                 (render) ?
                     <div className='aboutMe web-page'>
-
+                        <Slider pos={pos} setPos={setPos} />
                         <div className='info'>
                             <p>{switchPost()[0]}</p>
                             <img />
                             <p>{switchPost()[1]}</p>
                         </div>
-                        <Slider pos={pos} setPos={setPos} />
                     </div >
                     : ''
             }

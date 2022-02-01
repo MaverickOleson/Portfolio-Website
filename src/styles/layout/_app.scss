@@ -19,7 +19,7 @@
         bottom: calc(var(--vh, 1vh) * 84);
         right: calc(100vw - 16vh);
     }
-    .workExperience {
+    .career {
         top: calc(var(--vh, 1vh) * 84);
         right: calc(100vw - 16vh);
     }
@@ -35,7 +35,7 @@
         transform: translateY(calc(var(--vh, 1vh) * 84))
             translateX(calc(100vw - 16vh));
     }
-    &.workExperience {
+    &.career {
         transform: translateY(calc(var(--vh, 1vh) * -84))
             translateX(calc(100vw - 16vh));
     }
@@ -139,7 +139,7 @@
             transform: translateX(0) translateY(0);
         }
     }
-    @media (orientation: portrait){
+    @media screen and (orientation: portrait){
         .blog {
             bottom: calc(var(--vh, 1vh) * 88);
             left: calc(100vw - 12vh);
@@ -148,7 +148,7 @@
             bottom: calc(var(--vh, 1vh) * 88);
             right: calc(100vw - 12vh);
         }
-        .workExperience {
+        .career {
             top: calc(var(--vh, 1vh) * 88);
             right: calc(100vw - 12vh);
         }
@@ -164,7 +164,7 @@
             transform: translateY(calc(var(--vh, 1vh) * 88))
                 translateX(calc(100vw - 12vh));
         }
-        &.workExperience {
+        &.career {
             transform: translateY(calc(var(--vh, 1vh) * -88))
                 translateX(calc(100vw - 12vh));
         }
