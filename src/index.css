@@ -1,6 +1,7 @@
 .navSquare {
   width: 20vh;
   height: calc(var(--vh, 1vh) * 20);
+  font-size: 4vh;
   z-index: 2;
   display: flex;
   position: absolute;
@@ -13,6 +14,7 @@
   .navSquare {
     width: 12vh;
     height: calc(var(--vh, 1vh) * 12);
+    font-size: 3vh;
   }
 }
 .navSquare:hover {
