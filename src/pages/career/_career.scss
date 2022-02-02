@@ -1,107 +1,76 @@
 .career {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background: #f004;
+    background: #f008;
     // background: linear-gradient(to top , #f808, #f008);
     #career{
-        width: 80vw;
+        width: 76vw;
         height: 43vw;
+        display: flex;
+        flex-direction: row;
+        margin-top: calc((100vh - 43vw) / 2);
         #careerCanvCont{
-            width: 40vw;
+            width: 38vw;
             height: 43vw;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: absolute;
+            position: relative;
             #arrowLeft{
-                font-size: 100px;
+                width: 80px;
+                height: 80px;
                 position: absolute;
                 bottom: 1vw;
-                right: calc(1vw + 150px);
+                right: calc(1vw + 125px);
+                background-image: url('svgs/leftArrow.svg');
+                background-size: cover;
                 user-select: none;
-                color: ghostwhite;
                 &:hover{
                     cursor: pointer;
-                }
-                &:active{
-                    color: gray;
                 }
             }
             #arrowRight{
-                font-size: 100px;
+                width: 80px;
+                height: 80px;
                 position: absolute;
                 bottom: 1vw;
                 right: 1vw;
+                background-image: url('svgs/rightArrow.svg');
+                background-size: cover;
                 user-select: none;
-                color: ghostwhite;
                 &:hover{
                     cursor: pointer;
-                }
-                &:active{
-                    color: gray;
                 }
             }
         }
         #careerTextCont{
-            width: 40vw;
+            width: 38vw;
             height: 43vw;
-            transform: translateX(100%);
             overflow-y: scroll;
-            background: ghostwhite;
+            background: white;
             color: black;
-            .slideRight1{
-                animation: slideRight1 0.5s ease forwards;
+            .appear1{
+                animation: appear1 0.5s ease forwards;
             }
-            .slideRight2{
-                animation: slideRight2 0.5s ease forwards;
+            .appear2{
+                animation: appear2 0.5s ease forwards;
             }
-            .slideLeft1{
-                animation: slideLeft1 0.5s ease forwards;
-            }
-            .slideLeft2{
-                animation: slideLeft2 0.5s ease forwards;
-            }
-            @keyframes slideRight1 {
+            @keyframes appear1 {
                 0%{
-                    opacity: 0.2;
-                    transform: translateX(-50%);
+                    opacity: 0;
                 }
                 100%{
                     opacity: 1;
-                    transform: translateX(0);
                 }
             }
-            @keyframes slideRight2 {
+            @keyframes appear2 {
                 0%{
-                    opacity: 0.2;
-                    transform: translateX(-50%);
+                    opacity: 0;
                 }
                 100%{
                     opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-            @keyframes slideLeft1 {
-                0%{
-                    opacity: 0.2;
-                    transform: translateX(50%);
-                }
-                100%{
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-            @keyframes slideLeft2 {
-                0%{
-                    opacity: 0.2;
-                    transform: translateX(50%);
-                }
-                100%{
-                    opacity: 1;
-                    transform: translateX(0);
                 }
             }
         }
@@ -110,25 +79,17 @@
         #career{
             width: 80vw;
             height: 190vw;
-            transform: translateY(20vw);
+            flex-direction: column;
+            margin-top: calc(12vh + 10vw);
             #careerCanvCont{
                 width: 80vw;
                 height: 95vw;
-                transform: none;
-                #arrowRight{
-                    font-size: 60px;
-                }
-                #arrowLeft{
-                    font-size: 60px;
-                    right: calc(1vw + 100px);
-                }
             }
             #careerTextCont{
                 width: 80vw;
                 height: 95vw;
-                transform: translateY(95vw);
                 background: transparent;
-                color: ghostwhite;
+                color: white;
             }
         }
     }

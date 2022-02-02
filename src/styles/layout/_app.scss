@@ -12,36 +12,36 @@
         background-color: ghostwhite;
     }
     .blog {
-        bottom: calc(var(--vh, 1vh) * 84);
-        left: calc(100vw - 16vh);
+        bottom: calc(var(--vh, 1vh) * 80);
+        left: calc(100vw - 20vh);
     }
     .aboutMe {
-        bottom: calc(var(--vh, 1vh) * 84);
-        right: calc(100vw - 16vh);
+        bottom: calc(var(--vh, 1vh) * 80);
+        right: calc(100vw - 20vh);
     }
     .career {
-        top: calc(var(--vh, 1vh) * 84);
-        right: calc(100vw - 16vh);
+        top: calc(var(--vh, 1vh) * 80);
+        right: calc(100vw - 20vh);
     }
     .gallery {
-        top: calc(var(--vh, 1vh) * 84);
-        left: calc(100vw - 16vh);
+        top: calc(var(--vh, 1vh) * 80);
+        left: calc(100vw - 20vh);
     }
     &.blog {
-        transform: translateY(calc(var(--vh, 1vh) * 84))
-            translateX(calc(-100vw + 16vh));
+        transform: translateY(calc(var(--vh, 1vh) * 80))
+            translateX(calc(-100vw + 20vh));
     }
     &.aboutMe {
-        transform: translateY(calc(var(--vh, 1vh) * 84))
-            translateX(calc(100vw - 16vh));
+        transform: translateY(calc(var(--vh, 1vh) * 80))
+            translateX(calc(100vw - 20vh));
     }
     &.career {
-        transform: translateY(calc(var(--vh, 1vh) * -84))
-            translateX(calc(100vw - 16vh));
+        transform: translateY(calc(var(--vh, 1vh) * -80))
+            translateX(calc(100vw - 20vh));
     }
     &.gallery {
-        transform: translateY(calc(var(--vh, 1vh) * -84))
-            translateX(calc(-100vw + 16vh));
+        transform: translateY(calc(var(--vh, 1vh) * -80))
+            translateX(calc(-100vw + 20vh));
     }
     &.shift1F {
         animation: shift1F 0.75s ease forwards;
@@ -72,14 +72,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * 84))
-                translateX(calc(-100vw + 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * 80))
+                translateX(calc(-100vw + 20vh));
         }
     }
     @keyframes shift1B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * 84))
-                translateX(calc(-100vw + 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * 80))
+                translateX(calc(-100vw + 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -90,14 +90,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * 84))
-                translateX(calc(100vw - 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * 80))
+                translateX(calc(100vw - 20vh));
         }
     }
     @keyframes shift2B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * 84))
-                translateX(calc(100vw - 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * 80))
+                translateX(calc(100vw - 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -108,14 +108,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * -84))
-                translateX(calc(100vw - 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * -80))
+                translateX(calc(100vw - 20vh));
         }
     }
     @keyframes shift3B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * -84))
-                translateX(calc(100vw - 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * -80))
+                translateX(calc(100vw - 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);
@@ -126,14 +126,14 @@
             transform: translateX(0) translateY(0);
         }
         100% {
-            transform: translateY(calc(var(--vh, 1vh) * -84))
-                translateX(calc(-100vw + 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * -80))
+                translateX(calc(-100vw + 20vh));
         }
     }
     @keyframes shift4B {
         0% {
-            transform: translateY(calc(var(--vh, 1vh) * -84))
-                translateX(calc(-100vw + 16vh));
+            transform: translateY(calc(var(--vh, 1vh) * -80))
+                translateX(calc(-100vw + 20vh));
         }
         100% {
             transform: translateX(0) translateY(0);

@@ -5,20 +5,47 @@
     background: #f0f8;
     // background: linear-gradient(to bottom, #fff8, #f0f8);
     color: ghostwhite;
+    .slider{
+        position: absolute;
+        margin-top: 25px;
+    }
     .info {
         width: 100%;
+        height: fit-content;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
         flex-wrap: wrap;
+        font-size: 25px;
+        margin-top: 85px;
+        margin-bottom: 21vh;
+        @media screen and (orientation: portrait) {
+            margin-bottom: 13vh;
+        }
         img {
-            width: 40vw;
-            height: 40vw;
+            width: 28vw;
+            height: 28vw;
             border-radius: 100%;
         }
         p{
-            width: 400px;
+            width: 30%;
             word-wrap: break-word;
+            overflow-y: scroll;
+            margin: 0;
+        }
+        @media screen and (max-width: 1000px) {
+            p{
+                width: 48%;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            p{
+                width: 96%;
+            }
+            img{
+                width: 50vw;
+                height: 50vw
+            }
         }
     }
 }

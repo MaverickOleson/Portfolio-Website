@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slider from '../../components/slider/slider';
 
@@ -7,7 +7,7 @@ export default React.memo(function AboutMe({ setShift }) {
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
     const [pos, setPos] = useState(0);
-    const posts = [['I lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssss', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
+    const posts = [['asdf', 'I lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssII lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssssI lovesssssssssssssssssssssssdssssssssssssssss'], ['2', '2'], ['3', '3'], ['4', '4']];
     useEffect(() => {
         if (window.location.pathname === '/') {
             setNavText('About\nMe');

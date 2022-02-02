@@ -3,19 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import person from '../../person.glb';
-import { ImArrowLeft, ImArrowRight } from 'react-icons/im';
 
 export default React.memo(function Career({ setShift }) {
     const navigation = useNavigate();
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
-    const careerRings = ['<span>Became an Eagle Scout</span>After 8 years of going to meetings and doing work to earn merit badges, I ', 'Are', 'Pretty', 'Cool'];
+    const careerRings = ['<span>I Became an Eagle Scout</span>After 4 years of going to meetings and doing work to earn merit badges, I ', 'Are', 'Pretty', 'Cool'];
     const currentRing = useRef(-1);
     const [animReady, setAnimReady] = useState(true);
     const personFunctions = useRef([]);
-    const loaded = useRef(false);
+    const cameraScale = useRef([1]);
     const careerCanvas = useRef();
-    const resize = useRef(false);
     const keyPress = useRef(false);
     const careerText = useRef();
 
@@ -73,7 +71,7 @@ export default React.memo(function Career({ setShift }) {
                     keyPress.current = false;
                     return;
                 }
-                if (person.position.z != pastZ - 1) {
+                if (person.position.z !== pastZ - 1) {
                     interval++;
                     person.position.z = pastZ - interval / 10;
                     if (interval / 10 < 0.5) person.position.y = interval / 10 * 2 + pastY;
@@ -87,7 +85,7 @@ export default React.memo(function Career({ setShift }) {
                     keyPress.current = false;
                     currentRing.current++;
                     careerText.current.innerHTML = careerRings[currentRing.current] || 'My Career';
-                    (careerText.current.className === 'slideRight1') ? careerText.current.className = 'slideRight2' : careerText.current.className = 'slideRight1';
+                    (careerText.current.className === 'appear1') ? careerText.current.className = 'appear2' : careerText.current.className = 'appear1';
                 }
             }
             function personLeft() {
@@ -110,7 +108,7 @@ export default React.memo(function Career({ setShift }) {
                     keyPress.current = false;
                     currentRing.current--;
                     careerText.current.innerHTML = careerRings[currentRing.current] || 'My Career';
-                    (careerText.current.className === 'slideLeft1') ? careerText.current.className = 'slideLeft2' : careerText.current.className = 'slideLeft1';
+                    (careerText.current.className === 'appear1') ? careerText.current.className = 'appear2' : careerText.current.className = 'appear1';
                 }
             }
 
@@ -118,10 +116,8 @@ export default React.memo(function Career({ setShift }) {
 
             //animate
             function animate() {
-                if (window.location.pathname === '/' || resize.current) {
-                    resize.current = false;
-                    return;
-                }
+                if (window.location.pathname === '/') return;
+                camera.scale.set(cameraScale.current[0], cameraScale.current[0], cameraScale.current[0]);
                 requestAnimationFrame(animate);
                 if (personFunctions.current[0]) {
                     keyPress.current = true;
@@ -148,6 +144,12 @@ export default React.memo(function Career({ setShift }) {
 
     document.addEventListener('keydown', personControls, false);
 
+    if (window.location.pathname === '/career') {
+        window.addEventListener('resize', () => {
+            cameraScale.current[0] = (window.innerWidth > window.innerHeight) ? cameraScale.current[1] / window.innerWidth : cameraScale.current[1] / window.innerWidth / 2.5;
+        });
+    }
+
     useEffect(() => {
         if (window.location.pathname === '/') {
             setAnimReady(false);
@@ -157,20 +159,14 @@ export default React.memo(function Career({ setShift }) {
             setNavText('Home');
             setRender(true);
         }
-        if (animReady && careerCanvas.current && !loaded.current) { careerAnim(); currentRing.current = -1; loaded.current = true };
+        if (animReady && careerCanvas.current) {
+            setAnimReady(false);
+            cameraScale.current[1] = window.innerWidth;
+            careerAnim();
+            console.log('sdf');
+            currentRing.current = -1;
+        };
     });
-
-    if (window.location.pathname === '/career') {
-        window.addEventListener('resize', () => {
-            if (careerText.current) {
-                resize.current = true;
-                careerAnim();
-                careerText.current.innerHTML = 'My Career';
-                currentRing.current = -1;
-            }
-        });
-    }
-
     return (
         <>
             <h1 className='navSquare' id="careerNav" onPointerDown={() => {
@@ -204,12 +200,12 @@ export default React.memo(function Career({ setShift }) {
                         <div id="career">
                             <div id="careerCanvCont">
                                 <canvas ref={careerCanvas}></canvas>
-                                <ImArrowLeft id="arrowLeft" onPointerDown={() => {
+                                <div id="arrowLeft" onPointerDown={() => {
                                     document.dispatchEvent(new KeyboardEvent('keydown', {
                                         'code': 'KeyA'
                                     }))
                                 }} />
-                                <ImArrowRight id="arrowRight" onPointerDown={() => {
+                                <div id="arrowRight" onPointerDown={() => {
                                     document.dispatchEvent(new KeyboardEvent('keydown', {
                                         'code': 'KeyD'
                                     }))
