@@ -9,6 +9,7 @@
         height: 43vw;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         margin-top: calc((var(--vh, 1vh) * 100 - 38vw) / 2);
         // centered content
         #careerCanvCont{
@@ -86,7 +87,6 @@
         #career{
             width: 80vw;
             height: 160vw;
-            flex-direction: column;
             margin-top: calc(calc(var(--vh, 1vh) * 12) + 10vw);
             #careerCanvCont{
                 width: 80vw;
