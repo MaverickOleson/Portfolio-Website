@@ -5,17 +5,21 @@
     font-family: main;
     src: url('./CaslonAntique.ttf');
 }
+// font made
 .app {
     width: 100%;
     min-height: calc(var(--vh, 1vh) * 100);
     color: ghostwhite;
     background-position: center;
     background-size: calc(calc(var(--vh, 1vh) * 10));
+    // background set
     text-align: center;
     font-family: main;
+    // text-align and font set
     img {
         background-color: ghostwhite;
     }
+    // img background color set
     .blog {
         bottom: calc(var(--vh, 1vh) * 80);
         left: calc(100vw - 20vh);
@@ -32,6 +36,7 @@
         top: calc(var(--vh, 1vh) * 80);
         left: calc(100vw - 20vh);
     }
+    // different classed divs positioned
     &.blog {
         transform: translateY(calc(var(--vh, 1vh) * 80))
             translateX(calc(-100vw + 20vh));
@@ -72,6 +77,7 @@
     &.shift4B {
         animation: shift4B 0.75s ease forwards;
     }
+    // different classed for app change position or animation
     @keyframes shift1F {
         0% {
             transform: translateX(0) translateY(0);

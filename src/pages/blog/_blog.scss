@@ -4,6 +4,7 @@
     align-items: center;
     background: #0ff8;
     color: #f8f8ffea;
+    // centered content
     .tab {
         display: inline-block;
         margin-left: 20px;
@@ -18,10 +19,12 @@
         align-items: center;
         overflow-y: scroll;
         word-wrap: break-word;
+        // scrolls on overflow
         margin-bottom: calc(var(--vh, 1vh) * 21);
         @media screen and (orientation: portrait) {
             margin-bottom: calc(var(--vh, 1vh) * 13);
         }
+        // centered content
         *{
             font-size: 35px;
             width: 100%;
@@ -29,6 +32,7 @@
             &::first-letter {
                 margin-left: 80px;
             }
+            // first letter indented
         }
     }
     .slider{
@@ -46,6 +50,7 @@
     .slideUp2{
         animation: slideUp2 0.5s ease forwards;
     }
+    //classes for animations
     @keyframes slideDown1 {
         0%{
             opacity: 0.2;

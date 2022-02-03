@@ -6,6 +6,7 @@
     @media screen and (max-width: 1075px) {
         width: 45%;
     }
+    //responsive sizing
     height: 14px;
     position: relative;
     background-color: ghostwhite;
@@ -13,6 +14,7 @@
     border-radius: 15px;
     touch-action: none;
     user-select: none;
+    // highlighting prevented
     margin: {
         top: 20px;
         bottom: 20px;
@@ -33,5 +35,6 @@
         transform: translateY(-50%) translateX(-50%);
         background: #111;
         box-sizing: border-box;
+        // knob moved to left end
     }
 }

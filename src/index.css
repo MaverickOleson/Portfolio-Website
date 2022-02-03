@@ -508,7 +508,7 @@
   border: 10px solid ghostwhite;
   padding: 50px;
   padding-bottom: 0;
-  margin-top: calc(var(--vh, 1vh) * 8);
+  margin-top: calc(var(--vh, 1vh) * 5);
 }
 @media screen and (orientation: portrait) {
   .home main {

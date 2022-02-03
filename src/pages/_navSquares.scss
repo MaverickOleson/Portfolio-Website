@@ -7,13 +7,16 @@
         height: calc(var(--vh, 1vh) * 12);
         font-size: calc(var(--vh, 1vh) * 3);
     }
+    // responsive sizing
     z-index: 2;
     display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
+    // centered content
     margin: 0;
     user-select: none;
+    // highlighting prevent3ed
     &:hover{
         cursor: pointer;
     }
@@ -36,4 +39,5 @@
         bottom: 0;
         background: #00f;
     }
+    // classes for navs determine position
 }

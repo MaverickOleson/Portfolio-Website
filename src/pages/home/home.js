@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function Home() {
     return (
+        // conditional rendering
         <div className='home web-page'>
             <main>
                 <h1>Portfolio Website by<br />Maverick Oleson</h1>

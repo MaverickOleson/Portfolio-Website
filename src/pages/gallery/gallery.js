@@ -56,6 +56,7 @@ export default React.memo(function Gallery({ setShift }) {
             setNavText('Home');
             setRender(true);
         }
+        // sets up conditional rendering
     })
     return (
         <>
@@ -70,23 +71,26 @@ export default React.memo(function Gallery({ setShift }) {
                             document.removeEventListener('animationend', startGallery);
                         }
                     }
+                    // styles change upon clicks, and certain things get changed after animations
                 }
                 else {
                     navigation('/');
                     setShift(' shift4B');
+                    // styles change upon clicks
                 }
             }}>{navText}</h1>
             {
                 (render) ?
+                    // conditional rendering
                     <div className='gallery web-page'>
                         <div className='img-orbit'>
-                            <a ref={img1} className='satel' href={imgSrcs[6][1]}><img src={imgSrcs[6][0]} /></a>
-                            <a ref={img2} className='satel' href={imgSrcs[5][1]}><img src={imgSrcs[5][0]} /></a>
-                            <a ref={img3} className='satel' href={imgSrcs[4][1]}><img src={imgSrcs[4][0]} /></a>
-                            <a ref={img4} className='satel' href={imgSrcs[3][1]}><img src={imgSrcs[3][0]} /></a>
-                            <a ref={img5} className='satel' href={imgSrcs[2][1]}><img src={imgSrcs[2][0]} /></a>
-                            <a ref={img6} className='satel' href={imgSrcs[1][1]}><img src={imgSrcs[1][0]} /></a>
-                            <a className='current' href={imgSrcs[0][1]}><img src={imgSrcs[0][0]} /></a>
+                            <a ref={img1} className='satel' href={imgSrcs[6][1]}><img src={imgSrcs[6][0]} alt='image' /></a>
+                            <a ref={img2} className='satel' href={imgSrcs[5][1]}><img src={imgSrcs[5][0]} alt='image' /></a>
+                            <a ref={img3} className='satel' href={imgSrcs[4][1]}><img src={imgSrcs[4][0]} alt='image' /></a>
+                            <a ref={img4} className='satel' href={imgSrcs[3][1]}><img src={imgSrcs[3][0]} alt='image' /></a>
+                            <a ref={img5} className='satel' href={imgSrcs[2][1]}><img src={imgSrcs[2][0]} alt='image' /></a>
+                            <a ref={img6} className='satel' href={imgSrcs[1][1]}><img src={imgSrcs[1][0]} alt='image' /></a>
+                            <a className='current' href={imgSrcs[0][1]}><img src={imgSrcs[0][0]} alt='image' /></a>
                             <div className='orbiters'>
                                 <div className='orbitArrow' onPointerDown={() => {
                                     document.addEventListener('animationend', orbit);
@@ -106,6 +110,7 @@ export default React.memo(function Gallery({ setShift }) {
                                     img3.current.classList.add('rotateB2');
                                     img4.current.classList.add('rotateB3');
                                     img5.current.classList.add('rotateB4');
+                                    // wheel animation happens on click and imageSrcs array changes, changing the image sources
                                 }} />
                                 <div className='orbitArrow' onPointerDown={() => {
                                     document.addEventListener('animationend', orbit);
@@ -127,10 +132,12 @@ export default React.memo(function Gallery({ setShift }) {
                                     img3.current.classList.add('rotateF2');
                                     img4.current.classList.add('rotateF3');
                                     img5.current.classList.add('rotateF4');
+                                    // wheel animation happens on click and imageSrcs array changes, changing the image sources
                                 }} />
                             </div>
                         </div>
                         <p id="galText"><a href={imgSrcs[0][2]}><BsGithub id="galGitHub" /></a><br />{imgSrcs[0][3]}</p>
+                        {/* text and link based of imageSrcs array */}
                     </div >
                     : ''
             }

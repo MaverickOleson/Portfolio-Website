@@ -21,6 +21,7 @@ export default React.memo(function Career({ setShift }) {
     const careerText = useRef();
 
     async function careerAnim() {
+        // scene
         const scene = new THREE.Scene();
 
         //camera
@@ -47,8 +48,10 @@ export default React.memo(function Career({ setShift }) {
         const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: careerCanvas.current });
         renderer.setPixelRatio(window.devicePixelRatio);
 
+        // imported model
         const loader = new GLTFLoader();
         loader.load(person, (glb) => {
+            //model
             const person = glb.scene;
             person.scale.set(0.5, 0.5, 0.5);
             person.position.y = 1.295 - careerRings.length / 2;
@@ -57,72 +60,90 @@ export default React.memo(function Career({ setShift }) {
             person.castShadow = true;
             scene.add(person);
 
+            // model movement values
             var pastZ = person.position.z;
             var interval = 0;
-
             var pastY = person.position.y;
 
+            // changes movement values to go right
             function personRight() {
                 if (pastZ === maxLeft - careerRings.length) {
+                    // checks if function is too far right
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     return;
                 }
                 if (person.position.z !== pastZ - 1) {
+                    // changes position of person for every frame
                     interval++;
                     person.position.z = pastZ - interval / 10;
                     if (interval / 10 < 0.5) person.position.y = interval / 10 * 2 + pastY;
                     else { person.position.y = Math.sqrt(1 - Math.pow(interval / 10 * 4 - 3, 2)) / 4 + 1 + pastY }
                 }
                 else {
+                    // resets model movement values
                     pastZ--;
                     interval = 0;
                     pastY++;
                     personFunctions.current[0] = undefined;
+                    // turns of keypress
                     keyPress.current = false;
+                    // text changed
                     currentRing.current++;
                     careerText.current.innerHTML = careerRings[currentRing.current] || '<h3>My Career</h3>';
                     (careerText.current.className === 'appear1') ? careerText.current.className = 'appear2' : careerText.current.className = 'appear1';
                 }
             }
+            // changes movement values to go left
             function personLeft() {
                 if (pastZ === maxLeft) {
+                    // checks if function is too far left
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     return;
                 }
                 if (person.position.z !== pastZ + 1) {
+                    // changes position of person for every frame
                     interval++;
                     person.position.z = pastZ + interval / 10;
                     if (interval / 10 < 0.5) person.position.y = Math.sqrt(1 - Math.pow((1 - interval / 10) * 4 - 3, 2)) / 4 + pastY;
                     else { person.position.y = pastY - interval / 10 * 2 + 1 }
                 }
                 else {
+                    // resets model movement values
                     pastZ++;
                     interval = 0;
                     pastY--;
                     personFunctions.current[0] = undefined;
+                    // turns of keypress
                     keyPress.current = false;
+                    // text changed
                     currentRing.current--;
                     careerText.current.innerHTML = careerRings[currentRing.current] || '<h3>My Career</h3>';
                     (careerText.current.className === 'appear1') ? careerText.current.className = 'appear2' : careerText.current.className = 'appear1';
                 }
             }
 
+            // functions to be used in animation function are stored in a variable 
             personFunctions.current = [undefined, personRight, personLeft];
 
             //animate
             function animate() {
-                if (window.location.pathname === '/') return;
+                // animation cancels if the page is changed
+                if (window.location.pathname !== '/career') return;
+                // size of renderer based on size of window
                 if (window.innerWidth > window.innerHeight) renderer.setSize(window.innerWidth * 0.38, window.innerWidth * 0.38);
                 else {
                     renderer.setSize(window.innerWidth * 0.8, window.innerWidth * 0.8);
                 }
+                // loop for requesting current frame
                 requestAnimationFrame(animate);
+                // if a function is set, it will animate the person either right or left
                 if (personFunctions.current[0]) {
                     keyPress.current = true;
                     personFunctions.current[0]();
                 }
+                // render
                 renderer.render(scene, camera);
             };
             animate()
@@ -131,6 +152,7 @@ export default React.memo(function Career({ setShift }) {
         });
     }
 
+    // on certain key presses, right or left movement function is set as the current function, and the keypress is set to true, preventing multiple keys down at once
     function personControls(e) {
         if (personFunctions.current[1]) {
             if (!keyPress.current && (e.code === 'ArrowRight' || e.code === 'KeyD')) {
@@ -142,6 +164,7 @@ export default React.memo(function Career({ setShift }) {
         }
     }
 
+    // event listener
     document.addEventListener('keydown', personControls, false);
 
     useEffect(() => {
@@ -158,6 +181,7 @@ export default React.memo(function Career({ setShift }) {
             careerAnim();
             currentRing.current = -1;
         };
+        // sets up conditional rendering and begins three js render
     });
     return (
         <>
@@ -173,6 +197,7 @@ export default React.memo(function Career({ setShift }) {
                             document.removeEventListener('animationend', startBlog);
                         }
                     }
+                    // styles change upon clicks, and certain things get changed after animations
                 }
                 else {
                     navigation('/');
@@ -184,10 +209,12 @@ export default React.memo(function Career({ setShift }) {
                             document.removeEventListener('animationend', endCareer);
                         }
                     }
+                    // styles change upon clicks, and certain things get changed after animations
                 }
             }}>{navText}</h1>
             {
                 (render) ?
+                    // conditional rendering
                     <div className='career web-page'>
                         <div id="career">
                             <div id="careerCanvCont">
@@ -202,6 +229,7 @@ export default React.memo(function Career({ setShift }) {
                                         'code': 'KeyD'
                                     }))
                                 }} />
+                                {/* simulated key presses using pointerdown, to trigger movement functions */}
                             </div>
                             <div id="careerTextCont">
                                 <p ref={careerText}><h3>My Career</h3></p>

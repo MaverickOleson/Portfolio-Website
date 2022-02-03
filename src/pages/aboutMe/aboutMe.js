@@ -27,6 +27,7 @@ export default React.memo(function AboutMe({ setShift }) {
             setNavText('Home');
             setRender(true);
         }
+        // sets up conditional rendering
     });
     function switchPost() {
         const point = Math.round(pos);
@@ -47,6 +48,7 @@ export default React.memo(function AboutMe({ setShift }) {
                             document.removeEventListener('animationend', startAboutMe);
                         }
                     }
+                    // styles change upon clicks, and certain things get changed after animations
                 }
                 else {
                     navigation('/');
@@ -58,17 +60,20 @@ export default React.memo(function AboutMe({ setShift }) {
                             document.removeEventListener('animationend', endAboutMe);
                         }
                     }
+                    // styles change upon clicks, and certain things get changed after animations
                 }
             }}>{navText}</h1>
             {
                 (render) ?
+                    // conditional rendering
                     <div className='aboutMe web-page'>
                         <Slider pos={pos} setPos={setPos} />
                         <div className='info'>
                             <p>{switchPost()[0]}</p>
-                            <img src={switchPost()[2]} />
+                            <img src={switchPost()[2]} alt='image' />
                             <p>{switchPost()[1]}</p>
                         </div>
+                        {/* slider value changes the index of the posts array. */}
                     </div >
                     : ''
             }

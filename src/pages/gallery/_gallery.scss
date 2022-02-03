@@ -4,10 +4,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // centered content
     #galText{
         font-size: 24px;
         width: 70%;
         word-wrap: break-word;
+        // scrolls on overflow
         position: absolute;
         top: calc(calc(var(--vh, 1vh) * 83.5) + 47px);
         padding-bottom: 10px;
@@ -15,6 +17,7 @@
             top: 50%;
             transform: translateY(40vw);
         }
+        // centered and responsive
         #galGitHub{
             font-size: 50px;
             color: white;

@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    //centered content
     $time: 0.4s;
     img{
         border-radius: 100%;
@@ -24,6 +25,7 @@
             width: 100%;
             height: 100%;
         }
+        // /current positioned in center
     }
     .satel {
         width: calc(var(--unit) * 20.5);
@@ -33,6 +35,7 @@
         $spread: calc(var(--unit) * -39);
         bottom: calc(var(--unit) * 27 + 47px);
         z-index: 1;
+        // .satel positioned in center
         &:nth-of-type(1) {
             transform: translateY(50%) rotateZ(0) translateX($spread);
             z-index: 0;
@@ -53,6 +56,7 @@
             transform: translateY(50%) rotateZ(180deg) translateX($spread) rotateZ(-180deg);
             z-index: 0;
         }
+        // transforms for different a tags
         &.rotateF1 {
             animation: rotateF1 $time forwards;
         }
@@ -65,6 +69,7 @@
         &.rotateF4 {
             animation: rotateF4 $time forwards;
         }
+        // classes for animations
         @keyframes rotateF1 {
             0% {
                 transform: translateY(50%) rotateZ(0) rotateZ(0) translateX($spread) rotateZ(0);
@@ -156,6 +161,7 @@
         position: absolute;
         bottom: 0;
         font-size: 15px;
+        // arrows positioned at bottom
         .orbitArrow{
             width: 47px;
             height: 47px;
@@ -165,9 +171,9 @@
             }
             &:nth-of-type(2){
                 background-image: url('svgs/rightArrow.svg');
-                background-size: cover;
-                
+                background-size: cover;   
             }
+            // arrows given unique images
         }
         h1{
             margin: 0;

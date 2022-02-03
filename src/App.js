@@ -10,18 +10,23 @@ export default React.memo(function App() {
   window.addEventListener('popstate', () => {
     setShift(window.location.pathname.replace('/', ' '));
   });
+  // makes going back a page take you to previous page
   window.addEventListener('resize', () => {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   });
+  // vh value, dependant on device height, changed for css changed on resize
   window.addEventListener("deviceorientation", () => { document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`) });
+  // vh value, dependant on device height, changed for css changed on orientation change
   window.addEventListener("keydown", (e) => {
     if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
       e.preventDefault();
     }
   }, false);
+  // prevents default action of certain keypresses
   useEffect(() => {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   })
+  // vh value, dependant on device height, changed on rerender
   return (
     <div className={`app${shift}`}>
       <Home />
@@ -29,6 +34,7 @@ export default React.memo(function App() {
       <AboutMe setShift={setShift} />
       <Career setShift={setShift} />
       <Gallery setShift={setShift} />
+      {/* page components added */}
     </div>
   )
 });
