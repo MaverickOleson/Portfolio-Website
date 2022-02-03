@@ -6,6 +6,7 @@
         width: calc(100% - 100px + 10px);
         height: calc(100% - 100px + 10px);
         overflow-y: scroll;
+        overflow-x: hidden;
         // scrolls on overflow
         font-size: 25px;
         background: #000a;
