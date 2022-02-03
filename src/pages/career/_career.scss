@@ -3,27 +3,22 @@
     flex-direction: column;
     align-items: center;
     background: #f008;
-    // background: linear-gradient(to top , #f808, #f008);
     #career{
         width: 76vw;
         height: 43vw;
         display: flex;
         flex-direction: row;
-        margin-top: calc((100vh - 43vw) / 2);
+        margin-top: calc((var(--vh, 1vh) * 100 - 38vw) / 2);
         #careerCanvCont{
             width: 38vw;
-            height: 43vw;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 38vw;
             position: relative;
             #arrowLeft{
-                width: 80px;
-                height: 80px;
+                width: 60px;
+                height: 60px;
                 position: absolute;
-                bottom: 1vw;
-                right: calc(1vw + 125px);
+                bottom: 0;
+                right: 95px;
                 background-image: url('svgs/leftArrow.svg');
                 background-size: cover;
                 user-select: none;
@@ -32,11 +27,11 @@
                 }
             }
             #arrowRight{
-                width: 80px;
-                height: 80px;
+                width: 60px;
+                height: 60px;
                 position: absolute;
-                bottom: 1vw;
-                right: 1vw;
+                bottom: 0;
+                right: 10px;
                 background-image: url('svgs/rightArrow.svg');
                 background-size: cover;
                 user-select: none;
@@ -47,10 +42,18 @@
         }
         #careerTextCont{
             width: 38vw;
-            height: 43vw;
+            height: 38vw;
             overflow-y: scroll;
             background: white;
             color: black;
+            font-size: 30px;
+            p{
+                width: 95.5%;
+                margin: auto;
+                h3{
+                    margin: 11px;
+                }
+            }
             .appear1{
                 animation: appear1 0.5s ease forwards;
             }
@@ -78,16 +81,16 @@
     @media screen and (orientation: portrait) {
         #career{
             width: 80vw;
-            height: 190vw;
+            height: 160vw;
             flex-direction: column;
-            margin-top: calc(12vh + 10vw);
+            margin-top: calc(calc(var(--vh, 1vh) * 12) + 10vw);
             #careerCanvCont{
                 width: 80vw;
-                height: 95vw;
+                height: 80vw;
             }
             #careerTextCont{
                 width: 80vw;
-                height: 95vw;
+                height: 80vw;
                 background: transparent;
                 color: white;
             }

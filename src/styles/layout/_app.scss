@@ -1,13 +1,18 @@
 *::-webkit-scrollbar {
     display: none;
 }
+@font-face {
+    font-family: main;
+    src: url('./CaslonAntique.ttf');
+}
 .app {
     width: 100%;
     min-height: calc(var(--vh, 1vh) * 100);
     color: ghostwhite;
     background-position: center;
-    background-size: calc(10vh);
+    background-size: calc(calc(var(--vh, 1vh) * 10));
     text-align: center;
+    font-family: main;
     img {
         background-color: ghostwhite;
     }

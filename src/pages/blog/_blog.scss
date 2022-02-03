@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     background: #0ff8;
-    // background: linear-gradient(to bottom, #f0f8, #0ff8);
     color: #f8f8ffea;
     .tab {
         display: inline-block;
@@ -11,7 +10,7 @@
     }
     #blogPostCont{
         width: 70%;
-        height: 80vh;
+        height: calc(var(--vh, 1vh) * 80);
         text-align:left;
         z-index: -1;
         display: flex;
@@ -19,9 +18,9 @@
         align-items: center;
         overflow-y: scroll;
         word-wrap: break-word;
-        margin-bottom: 21vh;
+        margin-bottom: calc(var(--vh, 1vh) * 21);
         @media screen and (orientation: portrait) {
-            margin-bottom: 13vh;
+            margin-bottom: calc(var(--vh, 1vh) * 13);
         }
         *{
             font-size: 35px;
@@ -33,7 +32,7 @@
         }
     }
     .slider{
-        margin-top: 10vh;
+        margin-top: calc(var(--vh, 1vh) * 10);
     }
     .slideDown1{
         animation: slideDown1 0.5s ease forwards;
@@ -54,7 +53,7 @@
         }
         100%{
             opacity: 1;
-            transform: translateY(5vh);
+            transform: translateY(calc(var(--vh, 1vh) * 5));
         }
     }
     @keyframes slideDown2 {
@@ -64,27 +63,27 @@
         }
         100%{
             opacity: 1;
-            transform: translateY(5vh);
+            transform: translateY(calc(var(--vh, 1vh) * 5));
         }
     }
     @keyframes slideUp1 {
         0%{
             opacity: 0.2;
-            transform: translateY(10vh);
+            transform: translateY(calc(var(--vh, 1vh) * 10));
         }
         100%{
             opacity: 1;
-            transform: translateY(5vh);
+            transform: translateY(calc(var(--vh, 1vh) * 5));
         }
     }
     @keyframes slideUp2 {
         0%{
             opacity: 0.2;
-            transform: translateY(10vh);
+            transform: translateY(calc(var(--vh, 1vh) * 10));
         }
         100%{
             opacity: 1;
-            transform: translateY(5vh);
+            transform: translateY(calc(var(--vh, 1vh) * 5));
         }
     }
 }

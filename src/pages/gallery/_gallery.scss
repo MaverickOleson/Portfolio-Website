@@ -4,19 +4,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // background: linear-gradient(to bottom , #00f8, #f0f8);
     #galText{
         font-size: 24px;
         width: 70%;
         word-wrap: break-word;
         position: absolute;
-        top: calc(83.5vh + 47px);
+        top: calc(calc(var(--vh, 1vh) * 83.5) + 47px);
         padding-bottom: 10px;
         @media screen and (orientation: portrait) {
             top: 50%;
             transform: translateY(40vw);
         }
+        #galGitHub{
+            font-size: 50px;
+            color: white;
+        }
     }
 }
-
-//intro animation?

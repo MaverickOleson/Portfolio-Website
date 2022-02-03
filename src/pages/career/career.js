@@ -8,26 +8,24 @@ export default React.memo(function Career({ setShift }) {
     const navigation = useNavigate();
     const [render, setRender] = useState(false);
     const [navText, setNavText] = useState();
-    const careerRings = ['<span>I Became an Eagle Scout</span>After 4 years of going to meetings and doing work to earn merit badges, I ', 'Are', 'Pretty', 'Cool'];
+    const careerRings = [
+        '<h3>I Became an Eagle Scout</h3>After 4 years of going to meetings and doing work to earn merit badges, along with an Eagle Scout project, I became an Eagle Scout. For my Eagle Scout project, I had to contact the city of Phoenix, gather supplies, put out fliers at my church, and lead a group of people in shoveling 4 tons of rock on the front of wall for a elderly hospital.',
+        "<h3>I worked at McDonalds</h3>For about three months, I worked as a cook at McDonald as a summer job. It was hard work. I had to clean stoves, cook patties, fry meat, supply fridges, clean the kitchen, and so on. It went well as far as what I accomplished. I left upon school's arrival.",
+        "<h3>CIW (in progress)</h3>As a part of my coding class, I am currently working on my CIW certification. I will be taking the test in April, and will better validate my status as a good coder and programmer.",
+    ];
     const currentRing = useRef(-1);
     const [animReady, setAnimReady] = useState(true);
     const personFunctions = useRef([]);
-    const cameraScale = useRef([1]);
     const careerCanvas = useRef();
     const keyPress = useRef(false);
     const careerText = useRef();
 
-    //make more variables
-
     async function careerAnim() {
-        const unit = (window.innerWidth > window.innerHeight) ? 1 : 2.5;
-
         const scene = new THREE.Scene();
 
         //camera
-        const cameraWidth = (careerRings.length > 9) ? careerRings.length * 1.6 / unit : (careerRings.length > 4) ? careerRings.length * 2 / unit : careerRings.length * 5 / unit;
-        const cameraHeight = window.innerHeight / window.innerWidth * cameraWidth;
-        const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraHeight, -cameraHeight, -20, 100);
+        const cameraWidth = (careerRings.length > 9) ? careerRings.length * 0.8 : (careerRings.length > 4) ? careerRings.length : (careerRings.length > 2) ? careerRings.length * 1.5 : careerRings.length * 2.5;
+        const camera = new THREE.OrthographicCamera(-cameraWidth, cameraWidth, cameraWidth, -cameraWidth, -20, 100);
         camera.position.set(4, 4, 4);
         camera.lookAt(0, 0, 0);
 
@@ -48,7 +46,6 @@ export default React.memo(function Career({ setShift }) {
         //renderer
         const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: careerCanvas.current });
         renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
 
         const loader = new GLTFLoader();
         loader.load(person, (glb) => {
@@ -84,7 +81,7 @@ export default React.memo(function Career({ setShift }) {
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     currentRing.current++;
-                    careerText.current.innerHTML = careerRings[currentRing.current] || 'My Career';
+                    careerText.current.innerHTML = careerRings[currentRing.current] || '<h3>My Career</h3>';
                     (careerText.current.className === 'appear1') ? careerText.current.className = 'appear2' : careerText.current.className = 'appear1';
                 }
             }
@@ -107,7 +104,7 @@ export default React.memo(function Career({ setShift }) {
                     personFunctions.current[0] = undefined;
                     keyPress.current = false;
                     currentRing.current--;
-                    careerText.current.innerHTML = careerRings[currentRing.current] || 'My Career';
+                    careerText.current.innerHTML = careerRings[currentRing.current] || '<h3>My Career</h3>';
                     (careerText.current.className === 'appear1') ? careerText.current.className = 'appear2' : careerText.current.className = 'appear1';
                 }
             }
@@ -117,7 +114,10 @@ export default React.memo(function Career({ setShift }) {
             //animate
             function animate() {
                 if (window.location.pathname === '/') return;
-                camera.scale.set(cameraScale.current[0], cameraScale.current[0], cameraScale.current[0]);
+                if (window.innerWidth > window.innerHeight) renderer.setSize(window.innerWidth * 0.38, window.innerWidth * 0.38);
+                else {
+                    renderer.setSize(window.innerWidth * 0.8, window.innerWidth * 0.8);
+                }
                 requestAnimationFrame(animate);
                 if (personFunctions.current[0]) {
                     keyPress.current = true;
@@ -144,12 +144,6 @@ export default React.memo(function Career({ setShift }) {
 
     document.addEventListener('keydown', personControls, false);
 
-    if (window.location.pathname === '/career') {
-        window.addEventListener('resize', () => {
-            cameraScale.current[0] = (window.innerWidth > window.innerHeight) ? cameraScale.current[1] / window.innerWidth : cameraScale.current[1] / window.innerWidth / 2.5;
-        });
-    }
-
     useEffect(() => {
         if (window.location.pathname === '/') {
             setAnimReady(false);
@@ -161,9 +155,7 @@ export default React.memo(function Career({ setShift }) {
         }
         if (animReady && careerCanvas.current) {
             setAnimReady(false);
-            cameraScale.current[1] = window.innerWidth;
             careerAnim();
-            console.log('sdf');
             currentRing.current = -1;
         };
     });
@@ -212,7 +204,7 @@ export default React.memo(function Career({ setShift }) {
                                 }} />
                             </div>
                             <div id="careerTextCont">
-                                <h1 ref={careerText}>My Career</h1>
+                                <p ref={careerText}><h3>My Career</h3></p>
                             </div>
                         </div>
                     </div >
