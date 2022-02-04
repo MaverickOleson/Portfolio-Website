@@ -140,7 +140,6 @@ export default React.memo(function Career({ setShift }) {
                 requestAnimationFrame(animate);
                 // if a function is set, it will animate the person either right or left
                 if (personFunctions.current[0]) {
-                    keyPress.current = true;
                     personFunctions.current[0]();
                 }
                 // render
@@ -157,9 +156,11 @@ export default React.memo(function Career({ setShift }) {
         if (personFunctions.current[1]) {
             if (!keyPress.current && (e.code === 'ArrowRight' || e.code === 'KeyD')) {
                 personFunctions.current[0] = personFunctions.current[1];
+                keyPress.current = true;
             }
             if (!keyPress.current && (e.code === 'ArrowLeft' || e.code === 'KeyA')) {
                 personFunctions.current[0] = personFunctions.current[2];
+                keyPress.current = true;
             }
         }
     }
@@ -220,14 +221,10 @@ export default React.memo(function Career({ setShift }) {
                             <div id="careerCanvCont">
                                 <canvas ref={careerCanvas}></canvas>
                                 <div id="arrowLeft" onPointerDown={() => {
-                                    document.dispatchEvent(new KeyboardEvent('keydown', {
-                                        'code': 'KeyA'
-                                    }))
+                                    personFunctions.current[0] = personFunctions.current[2];
                                 }} />
                                 <div id="arrowRight" onPointerDown={() => {
-                                    document.dispatchEvent(new KeyboardEvent('keydown', {
-                                        'code': 'KeyD'
-                                    }))
+                                    personFunctions.current[0] = personFunctions.current[1];
                                 }} />
                                 {/* simulated key presses using pointerdown, to trigger movement functions */}
                             </div>

@@ -172,7 +172,7 @@
   }
 }
 .blog #blogPostCont * {
-  font-size: 35px;
+  font-size: 25px;
   width: 100%;
   margin: 0;
 }
@@ -285,7 +285,7 @@
   overflow-y: scroll;
   background: white;
   color: black;
-  font-size: 30px;
+  font-size: 25px;
 }
 .career #career #careerTextCont p {
   width: 95.5%;
@@ -319,7 +319,7 @@
 @media screen and (orientation: portrait) {
   .career #career {
     width: 80vw;
-    height: 160vw;
+    height: fit-content;
     margin-top: calc(var(--vh, 1vh) * 12 + 10vw);
   }
   .career #career #careerCanvCont {
@@ -328,7 +328,7 @@
   }
   .career #career #careerTextCont {
     width: 80vw;
-    height: 80vw;
+    height: fit-content;
     background: transparent;
     color: white;
   }
