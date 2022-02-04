@@ -176,9 +176,6 @@
   width: 100%;
   margin: 0;
 }
-.blog #blogPostCont *::first-letter {
-  margin-left: 80px;
-}
 .blog .slider {
   margin-top: calc(var(--vh, 1vh) * 10);
 }
