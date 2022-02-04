@@ -1,6 +1,7 @@
 .home{
     display: flex;
     justify-content: center;
+    align-items: center;
     // centered content
     main{
         width: calc(100% - 100px + 10px);
@@ -14,11 +15,9 @@
         border: 10px solid ghostwhite;
         padding: 50px;
         padding-bottom: 0;
-        margin-top: calc(var(--vh, 1vh) * 5);
         @media screen and (orientation: portrait) {
             width: calc(100% - 12vh + 10px);
             height: calc(100% - calc(var(--vh, 1vh) * 12) + 10px);
-            margin-top: calc(var(--vh, 1vh) * 6);
         }
         // centered and responsive
         h1{
