@@ -6,6 +6,7 @@
     main{
         width: calc(100% - 100px + 10px);
         height: calc(100% - 100px + 10px);
+        word-wrap: break-word;
         overflow-y: scroll;
         overflow-x: hidden;
         // scrolls on overflow
