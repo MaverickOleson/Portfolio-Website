@@ -4,21 +4,10 @@
   "icons": [
     {
       "src": "favicon.svg",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "favicon.svg",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "favicon.svg",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "any"
     }
   ],
-  "start_url": ".",
+  "start_url": "maverickoleson.com",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#000000"
